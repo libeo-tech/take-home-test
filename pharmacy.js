@@ -36,13 +36,20 @@ export class Pharmacy {
             break;
           case "Fervex":
             if (this.drugs[i].expiresIn > 0) {
-              if (this.drugs[i].expiresIn < 11) {
-                if (this.drugs[i].benefit < 49) {
-                  this.drugs[i].benefit = this.drugs[i].benefit + 2;
-                }
-              } else if (this.drugs[i].expiresIn < 6) {
+              if (this.drugs[i].expiresIn <= 5) {
                 if (this.drugs[i].benefit < 48) {
                   this.drugs[i].benefit = this.drugs[i].benefit + 3;
+                } else {
+                  this.drugs[i].benefit = 50;
+                }
+              } else if (
+                this.drugs[i].expiresIn > 5 &&
+                this.drugs[i].expiresIn <= 10
+              ) {
+                if (this.drugs[i].benefit < 49) {
+                  this.drugs[i].benefit = this.drugs[i].benefit + 2;
+                } else {
+                  this.drugs[i].benefit = this.drugs[i].benefit + 1;
                 }
               } else {
                 this.drugs[i].benefit = this.drugs[i].benefit + 1;

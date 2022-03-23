@@ -28,7 +28,7 @@ export class Pharmacy {
               if (this.drugs[i].benefit < 49) {
                 this.drugs[i].benefit = this.drugs[i].benefit + 2;
               } else {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
+                this.drugs[i].benefit = 50;
               }
             }
             break;
@@ -82,13 +82,13 @@ export class Pharmacy {
               if (this.drugs[i].benefit > 1) {
                 this.drugs[i].benefit = this.drugs[i].benefit - 2;
               } else {
-                this.drugs[i].benefit = this.drugs[i].benefit - 1;
+                this.drugs[i].benefit = 0;
               }
             }
         }
-      } else {
+      } /*else {
         this.drugs[i] = null;
-      }
+      }*/
     }
 
     return this.drugs;

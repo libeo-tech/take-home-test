@@ -48,3 +48,9 @@ yarn start
 ```sh
 docker-compose up
 ```
+
+## Solution
+
+I spend about 6 hours to propose a resolution of this exercise. 
+I passed more time on `updateBenefitValue` method reworking and a significant time on unit tests writing.
+I adopted Test Driven Development approach.

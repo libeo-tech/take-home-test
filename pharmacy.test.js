@@ -15,20 +15,26 @@ describe("Pharmacy", () => {
 
   it("should decrease normal drug benefit and expiresIn", () => {
     expect(
-      new Pharmacy([new Drug("Normal Drug", 3, 50)]).updateBenefitValue()
-    ).toEqual([new Drug("Normal Drug", 2, 49)]);
+      new Pharmacy([new Drug("Normal Drug", 3, 1)]).updateBenefitValue()
+    ).toEqual([new Drug("Normal Drug", 2, 0)]);
   });
 
   it("should not decrease normal drug 0 benefit but expiresIn", () => {
     expect(
-      new Pharmacy([new Drug("Normal Drug", -2, 0)]).updateBenefitValue()
-    ).toEqual([new Drug("Normal Drug", -3, 0)]);
+      new Pharmacy([new Drug("Normal Drug", 3, 0)]).updateBenefitValue()
+    ).toEqual([new Drug("Normal Drug", 2, 0)]);
   });
 
   it("should decrease normal drug benefit twice fast as expiration date passed", () => {
     expect(
       new Pharmacy([new Drug("Normal Drug", -2, 10)]).updateBenefitValue()
     ).toEqual([new Drug("Normal Drug", -3, 8)]);
+  });
+
+  it("should decrease normal drug benefit twice fast as expiration date passed with benefit not under 0", () => {
+    expect(
+      new Pharmacy([new Drug("Normal Drug", -2, 1)]).updateBenefitValue()
+    ).toEqual([new Drug("Normal Drug", -3, 0)]);
   });
 
   it("should increase herbal tea benefit and decrease expiresIn", () => {
@@ -43,9 +49,15 @@ describe("Pharmacy", () => {
     ).toEqual([new Drug("Herbal Tea", -3, 12)]);
   });
 
-  it("should not increase herbal tea over 50 benefit and decrease expiresIn", () => {
+  it("should not increase herbal tea benefit and should decrease expiresIn", () => {
     expect(
       new Pharmacy([new Drug("Herbal Tea", 3, 50)]).updateBenefitValue()
     ).toEqual([new Drug("Herbal Tea", 2, 50)]);
+  });
+
+  it("should not twice fast increase herbal tea benefit over 50 and should decrease expiresIn ", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", -2, 49)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", -3, 50)]);
   });
 });

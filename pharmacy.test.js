@@ -60,4 +60,10 @@ describe("Pharmacy", () => {
       new Pharmacy([new Drug("Herbal Tea", -2, 49)]).updateBenefitValue()
     ).toEqual([new Drug("Herbal Tea", -3, 50)]);
   });
+
+  it("should not update magic pill drug", () => {
+    expect(
+      new Pharmacy([new Drug("Magic Pill", 3, 30)]).updateBenefitValue()
+    ).toEqual([new Drug("Magic Pill", 3, 30)]);
+  });
 });

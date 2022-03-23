@@ -21,7 +21,9 @@ export class Pharmacy {
         switch (this.drugs[i].name) {
           case "Herbal Tea":
             if (this.drugs[i].expiresIn > 0) {
-              this.drugs[i].benefit = this.drugs[i].benefit + 1;
+              if (this.drugs[i].benefit < 50) {
+                this.drugs[i].benefit = this.drugs[i].benefit + 1;
+              }
             } else {
               if (this.drugs[i].benefit < 49) {
                 this.drugs[i].benefit = this.drugs[i].benefit + 2;

@@ -30,4 +30,22 @@ describe("Pharmacy", () => {
       new Pharmacy([new Drug("Normal Drug", -2, 10)]).updateBenefitValue()
     ).toEqual([new Drug("Normal Drug", -3, 8)]);
   });
+
+  it("should increase herbal tea benefit and decrease expiresIn", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", 3, 49)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", 2, 50)]);
+  });
+
+  it("should increase herbal tea benefit twice fast as expiration date passed", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", -2, 10)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", -3, 12)]);
+  });
+
+  it("should not increase herbal tea over 50 benefit and decrease expiresIn", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", 3, 50)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", 2, 50)]);
+  });
 });

@@ -62,10 +62,14 @@ export class Pharmacy {
             if (this.drugs[i].expiresIn > 0) {
               if (this.drugs[i].benefit > 1) {
                 this.drugs[i].benefit = this.drugs[i].benefit - 2;
+              } else {
+                this.drugs[i].benefit = 0;
               }
             } else {
               if (this.drugs[i].benefit > 3) {
                 this.drugs[i].benefit = this.drugs[i].benefit - 4;
+              } else {
+                this.drugs[i].benefit = 0;
               }
             }
             break;

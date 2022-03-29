@@ -14,6 +14,8 @@ const drugs = {
   DAFALGAN: 'Dafalgan',
 };
 
+const MAX_BENEFIT_VALUE = 50;
+
 export class DrugModel {
   constructor(name, expiresIn, benefit) {
     if (this.constructor === DrugModel) {
@@ -33,27 +35,29 @@ export class DrugModel {
     return drugs;
   }
 
+  static get maxBenefitValue() {
+    return MAX_BENEFIT_VALUE;
+  }
+
   static canProcess(name) {
     throw new Error('Method not implemented');
   }
 
-  static updateBenefitValue(drug) {
+  static updateBenefitValue(data) {
     // this.drugs[i].benefit = this.drugs[i].benefit - 1;
     // if ben is bigger than 0 reduce ben by 1 and return the drug
-    console.log('DRUGDRUG',drug)
-    drug.benefit = drug.benefit > 0
-      ? drug.benefit - 1
-      : drug.benefit;
+    data.benefit = data.benefit > 0
+      ? data.benefit - 1
+      : data.benefit;
 
-    return drug;
+    return data;
   }
 
-  static updateExpiresInValue(drug) {
+  static updateExpiresInValue(data) {
     // this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
-    console.log('DRUGDRUGexpiresIn',drug)
-    drug.expiresIn = drug.expiresIn - 1;
+    data.expiresIn = data.expiresIn - 1;
 
-    return drug;
+    return data;
   }
 
   static validate(data) {

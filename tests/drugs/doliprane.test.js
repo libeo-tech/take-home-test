@@ -1,5 +1,5 @@
-import {Doliprane} from "../../drugs/doliprane";
-import {DrugModel} from "../../drugs/models/drug";
+import {Doliprane} from "../../app/drugs/doliprane";
+import {DrugModel} from "../../app/drugs/models/drug";
 
 describe("Doliprane", () => {
   const drug = new Doliprane(1, 2);
@@ -117,12 +117,12 @@ describe("Doliprane", () => {
     });
 
     describe('When the data is valid', () => {
-      it("should object with updated benefit", () => {
+      it("should return object with updated benefit", () => {
         const result = drug.updateExpiresInValue(drug)
         expect(result).toEqual({
           name: 'Doliprane',
           expiresIn: 0,
-          benefit: 2
+          benefit: 1
         })
       });
     });

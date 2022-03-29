@@ -1,5 +1,5 @@
-import {HerbalTea} from "../../drugs/herbal-tea";
-import {DrugModel} from "../../drugs/models/drug";
+import {HerbalTea} from "../../app/drugs/herbal-tea";
+import {DrugModel} from "../../app/drugs/models/drug";
 
 describe("HerbalTea", () => {
   const drug = new HerbalTea(1, 2);

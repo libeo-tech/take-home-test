@@ -1,5 +1,5 @@
-import {Fervex} from "../../drugs/fervex";
-import {DrugModel} from "../../drugs/models/drug";
+import {Fervex} from "../../app/drugs/fervex";
+import {DrugModel} from "../../app/drugs/models/drug";
 
 describe("Fervex", () => {
   const drug = new Fervex(1, 2);

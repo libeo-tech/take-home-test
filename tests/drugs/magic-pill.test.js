@@ -1,5 +1,5 @@
-import {MagicPill} from "../../drugs/magic-pill";
-import {DrugModel} from "../../drugs/models/drug";
+import {MagicPill} from "../../app/drugs/magic-pill";
+import {DrugModel} from "../../app/drugs/models/drug";
 
 describe("MagicPill", () => {
   const drug = new MagicPill(1, 2);

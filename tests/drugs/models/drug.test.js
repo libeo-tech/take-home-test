@@ -1,4 +1,4 @@
-import {DrugModel} from "../../../drugs/models/drug";
+import {DrugModel} from "../../../app/drugs/models/drug";
 
 describe("DrugModel", () => {
   describe('When try to instantiate abstract DrugModel', () => {
@@ -21,8 +21,32 @@ describe("DrugModel", () => {
   });
 
   describe('When updateBenefitValue is called', () => {
-    describe('and the schema is valid', () => {
-      it("should return object with updated value", () => {
+    describe('and the schema is valid and the Drug benefit is 0', () => {
+      it("should return object without any changes", () => {
+        const result = DrugModel.updateBenefitValue({name: 'test', expiresIn: -1, benefit: 0});
+
+        expect(result).toEqual({
+          name: 'test',
+          expiresIn: -1,
+          benefit: 0
+        });
+      });
+    });
+
+    describe('and the schema is valid and the Drug is expired', () => {
+      it("should return object with benefit reduced by 2", () => {
+        const result = DrugModel.updateBenefitValue({name: 'test', expiresIn: -1, benefit: 20});
+
+        expect(result).toEqual({
+          name: 'test',
+          expiresIn: -1,
+          benefit: 18
+        });
+      });
+    });
+
+    describe('and the schema is valid and the Drug isn\'t expired', () => {
+      it("should return object with benefit reduced by 1", () => {
         const result = DrugModel.updateBenefitValue({name: 'test', expiresIn: 10, benefit: 20});
 
         expect(result).toEqual({

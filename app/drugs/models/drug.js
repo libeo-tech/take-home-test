@@ -59,6 +59,8 @@ export class DrugModel {
 
     data.benefit = data.benefit - benefitReduction;
 
+    if (data.benefit < MIN_BENEFIT_VALUE) data.benefit = MIN_BENEFIT_VALUE;
+
     return data;
   }
 

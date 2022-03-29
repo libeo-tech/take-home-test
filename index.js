@@ -5,7 +5,8 @@ const drugs = [
   ["Doliprane", 20, 30],
   ["Herbal Tea", 10, 5],
   ["Fervex", 5, 40],
-  ["Magic Pill", 15, 40]
+  ["Magic Pill", 15, 40],
+  ["Dafalgan", 50, 50],
 ];
 const trial = new Pharmacy(drugs);
 

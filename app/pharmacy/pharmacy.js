@@ -1,5 +1,5 @@
 import {DrugModel} from "../drugs/models/drug"
-import {Doliprane, HerbalTea, Fervex, MagicPill} from "../drugs/index"
+import {Doliprane, HerbalTea, Fervex, MagicPill, Dafalgan} from "../drugs/index"
 
 export class Pharmacy {
   constructor(drugs = []) {
@@ -23,6 +23,9 @@ export class Pharmacy {
             break;
           case 'magic pill':
             newDrug = new MagicPill(drug[1], drug[2])
+            break;
+          case 'dafalgan':
+            newDrug = new Dafalgan(drug[1], drug[2])
             break;
           default:
             break;

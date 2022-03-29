@@ -28,7 +28,7 @@ describe("Doliprane", () => {
       });
     });
 
-    describe('and the name is invalid', () => {
+    describe('and the name is valid', () => {
       it("should return false", () => {
         const isProcessable = drug.canProcess(drug.name)
         expect(isProcessable).toEqual(true);

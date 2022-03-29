@@ -1,13 +1,8 @@
 import {DrugModel} from "./models/drug";
 
-
 export class HerbalTea extends DrugModel {
   constructor(expiresIn, benefit) {
     super(DrugModel.drugs.HERBAL_TEA, expiresIn, benefit)
-  }
-
-  canProcess(name) {
-    return name === DrugModel.drugs.HERBAL_TEA;
   }
 
   updateBenefitValue(data) {

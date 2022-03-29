@@ -1,13 +1,8 @@
 import {DrugModel} from "./models/drug";
 
-
 export class Fervex extends DrugModel {
   constructor(expiresIn, benefit) {
     super(DrugModel.drugs.FERVEX, expiresIn, benefit)
-  }
-
-  canProcess(name) {
-    return name === DrugModel.drugs.FERVEX;
   }
 
   updateBenefitValue(data) {
@@ -15,7 +10,7 @@ export class Fervex extends DrugModel {
       DrugModel.validate(data);
 
       if (data.expiresIn <= 0) {
-        data.benefit = 0;
+        data.benefit = DrugModel.minBenefitValue;
         return data;
       } else if (data.benefit < DrugModel.maxBenefitValue) {
         if (data.expiresIn <= 10 && data.expiresIn > 5) {

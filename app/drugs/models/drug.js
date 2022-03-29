@@ -46,13 +46,11 @@ export class DrugModel {
     return MAX_BENEFIT_VALUE;
   }
 
-  static canProcess(name) {
-    throw new Error('Method not implemented');
+  static get minBenefitValue() {
+    return MIN_BENEFIT_VALUE;
   }
 
   static updateBenefitValue(data) {
-    // this.drugs[i].benefit = this.drugs[i].benefit - 1;
-    // if ben is bigger than 0 reduce ben by 1 and return the drug
     if (data.benefit == MIN_BENEFIT_VALUE) return data;
 
     let benefitReduction = 0;
@@ -65,7 +63,6 @@ export class DrugModel {
   }
 
   static updateExpiresInValue(data) {
-    // this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
     data.expiresIn = data.expiresIn - 1;
 
     return data;

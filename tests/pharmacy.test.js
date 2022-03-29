@@ -5,11 +5,10 @@ import {Fervex} from "../app/drugs/fervex";
 import {MagicPill} from "../app/drugs/magic-pill";
 
 describe("Pharmacy", () => {
-  describe.skip("When the Pharmacy is created", () => {
+  describe("When the Pharmacy is created", () => {
     describe("And the drug array is empty", () => {
       it("should return and empty array", () => {
         const pharmacy = new Pharmacy([]);
-        console.log('PH', pharmacy)
 
         expect(pharmacy).toEqual({drugs: []});
       });
@@ -19,8 +18,7 @@ describe("Pharmacy", () => {
       describe("For the drug name", () => {
         it("should throw error", () => {
           try {
-            const pharmacy = new Pharmacy([["Doliprane", 20, 30], ["Doli", 21, 30]]);
-            console.log('pharmacy', pharmacy)
+            new Pharmacy([["Doliprane", 20, 30], ["Doli", 21, 30]]);
           } catch (error) {
             expect(error).toBeInstanceOf(TypeError);
             expect(error).toHaveProperty('message', 'The Pharmacy does not have this drug available.');
@@ -33,7 +31,6 @@ describe("Pharmacy", () => {
           try {
             new Pharmacy([["Doliprane", 'max', 30]]);
           } catch (error) {
-            console.log('errorerror', error)
             expect(error).toBeInstanceOf(Error);
             expect(error).toHaveProperty('errors', {expiresIn: '"expiresIn" must be a number'});
           }
@@ -60,7 +57,6 @@ describe("Pharmacy", () => {
           ["Fervex", 5, 40],
           ["Magic Pill", 15, 40]
         ]);
-        console.log('PH', pharmacy)
 
         expect(pharmacy.drugs[0]).toBeInstanceOf(Doliprane)
         expect(pharmacy.drugs[1]).toBeInstanceOf(HerbalTea)
@@ -84,7 +80,7 @@ describe("Pharmacy", () => {
       it("should return and empty array", () => {
         const pharmacy = new Pharmacy([]);
         const updatedDrugValues = pharmacy.updateDrugValues();
-        console.log('updatedDrugValues',updatedDrugValues)
+
         expect(updatedDrugValues).toEqual([]);
       });
     });

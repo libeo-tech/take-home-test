@@ -1,13 +1,8 @@
 import {DrugModel} from "./models/drug";
 
-
 export class Doliprane extends DrugModel {
   constructor(expiresIn, benefit) {
     super(DrugModel.drugs.DOLIPRANE, expiresIn, benefit)
-  }
-
-  canProcess(name) {
-    return name === DrugModel.drugs.DOLIPRANE;
   }
 
   updateBenefitValue(data) {

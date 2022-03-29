@@ -9,7 +9,6 @@ export class Pharmacy {
   createDrugs(drugs) {
     return drugs.map((drug) => {
       let newDrug;
-      let error = false;
 
       if (Object.values(DrugModel.drugs).indexOf(drug[0]) > -1) {
         switch (drug[0].toLowerCase()) {
@@ -26,7 +25,6 @@ export class Pharmacy {
             newDrug = new MagicPill(drug[1], drug[2])
             break;
           default:
-            error = true;
             break;
         }
 

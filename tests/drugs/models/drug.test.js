@@ -1,3 +1,4 @@
+const Joi = require('joi');
 import {DrugModel} from "../../../app/drugs/models/drug";
 
 describe("DrugModel", () => {
@@ -12,11 +13,17 @@ describe("DrugModel", () => {
     });
   });
 
-  describe.skip('When try to get schema', () => {
-    it("should return the schema", () => {
-      //TODO need to find why joi isn't working
-      console.log('DrugDrug', DrugModel.schema)
-      expect(DrugModel.schema.isJoi).to.equal(true);
+  describe('When try to get schema', () => {
+    describe('And the wrong schema object is chosen', () => {
+      it("should be able to verify the Joi schema", () => {
+        expect(Joi.isSchema(DrugModel.maxBenefitValue)).toEqual(false);
+      });
+    });
+
+    describe('And the correct schema object is chosen', () => {
+      it("should be able to verify the Joi schema", () => {
+        expect(Joi.isSchema(DrugModel.schema)).toEqual(true);
+      });
     });
   });
 

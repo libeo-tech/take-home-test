@@ -18,24 +18,6 @@ describe("Fervex", () => {
     });
   });
 
-  describe('When canProcess is called', () => {
-    const drug = new Fervex(1, 2);
-
-    describe('and the name is invalid', () => {
-      it("should return false", () => {
-        const isProcessable = drug.canProcess('testName')
-        expect(isProcessable).toEqual(false);
-      });
-    });
-
-    describe('and the name is valid', () => {
-      it("should return false", () => {
-        const isProcessable = drug.canProcess(drug.name)
-        expect(isProcessable).toEqual(true);
-      });
-    });
-  });
-
   describe('When updateBenefitValue is called', () => {
     describe('When the name is invalid', () => {
       it("should throw and error", () => {

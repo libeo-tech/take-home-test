@@ -1,19 +1,20 @@
 import {Pharmacy} from "./app/pharmacy/pharmacy"
+import {Drug} from "./app/drugs/drug"
 import fs from "fs";
 
 const drugs = [
-  ["Doliprane", 20, 30],
-  ["Herbal Tea", 10, 5],
-  ["Fervex", 5, 40],
-  ["Magic Pill", 15, 40],
-  ["Dafalgan", 50, 50],
+  new Drug("Doliprane", 20, 30),
+  new Drug("Herbal Tea", 10, 5),
+  new Drug("Fervex", 5, 40),
+  new Drug("Magic Pill", 15, 40),
+  new Drug("Dafalgan", 50, 50)
 ];
 const trial = new Pharmacy(drugs);
 
 const log = [];
 
 for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
-  log.push(JSON.stringify(trial.updateDrugValues()));
+  log.push(JSON.stringify(trial.updateBenefitValue()));
 }
 
 /* eslint-disable no-console */

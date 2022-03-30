@@ -1,19 +1,16 @@
-import {HerbalTea} from "../../app/drugs/herbal-tea";
-import {DrugModel} from "../../app/drugs/models/drug";
+import {Drug} from "../../../app/drugs/drug";
+import {HerbalTeaStrategy} from "../../../app/drugs/strategies";
 
-describe("HerbalTea", () => {
-  const drug = new HerbalTea(1, 2);
+describe("HerbalTeaStrategy", () => {
+  const strategy = new HerbalTeaStrategy( 'Herbal Tea');
 
   describe('When try to instantiate the class', () => {
     it("should return an object", () => {
-      const drug = new HerbalTea(1, 2);
-
-      expect(drug).toBeInstanceOf(HerbalTea)
-      expect(drug).toBeInstanceOf(DrugModel)
-      expect(drug).toEqual({
+      expect(strategy).toBeInstanceOf(HerbalTeaStrategy)
+      expect(strategy).toMatchObject({
         name: 'Herbal Tea',
-        expiresIn: 1,
-        benefit: 2
+        updateBenefitValue: expect.any(Function),
+        updateExpiresInValue: expect.any(Function),
       })
     });
   });
@@ -22,7 +19,7 @@ describe("HerbalTea", () => {
     describe('When the name is invalid', () => {
       it("should throw and error", () => {
         try {
-          drug.updateBenefitValue({name: 123213, expiresIn: 10, benefit: 10})
+          strategy.updateBenefitValue({name: 123213, expiresIn: 10, benefit: 10})
         } catch (error) {
           expect(error).toBeInstanceOf(Error);
           expect(error).toHaveProperty('errors', {name: '"name" must be a string'});
@@ -33,7 +30,7 @@ describe("HerbalTea", () => {
     describe('When the expiresIn is invalid', () => {
       it("should throw and error", () => {
         try {
-          drug.updateBenefitValue({name: 'Herbal Tea', expiresIn: '2022-03-22', benefit: 10})
+          strategy.updateBenefitValue({name: 'Herbal Tea', expiresIn: '2022-03-22', benefit: 10})
         } catch (error) {
           expect(error).toBeInstanceOf(Error);
           expect(error).toHaveProperty('errors', {expiresIn: '"expiresIn" must be a number'});
@@ -44,7 +41,7 @@ describe("HerbalTea", () => {
     describe('When the benefit is invalid', () => {
       it("should throw and error", () => {
         try {
-          drug.updateBenefitValue({name: 'Herbal Tea', expiresIn: 10, benefit: 'max'})
+          strategy.updateBenefitValue({name: 'Herbal Tea', expiresIn: 10, benefit: 'max'})
         } catch (error) {
           expect(error).toBeInstanceOf(Error);
           expect(error).toHaveProperty('errors', {benefit: '"benefit" must be a number'});
@@ -55,8 +52,8 @@ describe("HerbalTea", () => {
     describe('When the data is valid and the drug didn\'t expire', () => {
       describe('And the benefit is at its max value (50)', () => {
         it("should return the same object", () => {
-          const drugMaxBenefit = new HerbalTea(1, 50);
-          const result = drug.updateBenefitValue(drugMaxBenefit)
+          const herbalTeaMaxBenefit = new Drug( 'Herbal Tea', 1, 50);
+          const result = strategy.updateBenefitValue(herbalTeaMaxBenefit)
           expect(result).toEqual({
             name: 'Herbal Tea',
             expiresIn: 1,
@@ -66,9 +63,9 @@ describe("HerbalTea", () => {
       });
 
       describe('And the benefit is lower than max value (50)', () => {
-        it("should return the same object", () => {
-          const drugCloseMaxBenefit = new HerbalTea(1, 49);
-          const result = drug.updateBenefitValue(drugCloseMaxBenefit)
+        it("should return benefit increade by 1", () => {
+          const drugCloseMaxBenefit = new Drug( 'Herbal Tea', 1, 49);
+          const result = strategy.updateBenefitValue(drugCloseMaxBenefit)
           expect(result).toEqual({
             name: 'Herbal Tea',
             expiresIn: 1,
@@ -81,8 +78,8 @@ describe("HerbalTea", () => {
     describe('When the data is valid and the drug expired', () => {
       describe('And the benefit is at its max value (50)', () => {
         it("should return the same object", () => {
-          const drugMaxBenefit = new HerbalTea(0, 50);
-          const result = drug.updateBenefitValue(drugMaxBenefit)
+          const herbalTeaMaxBenefit = new Drug( 'Herbal Tea', 0, 50);
+          const result = strategy.updateBenefitValue(herbalTeaMaxBenefit)
           expect(result).toEqual({
             name: 'Herbal Tea',
             expiresIn: 0,
@@ -92,9 +89,21 @@ describe("HerbalTea", () => {
       });
 
       describe('And the benefit is lower than max value (50)', () => {
-        it("should return the same object", () => {
-          const drugCloseMaxBenefit = new HerbalTea(-1, 49);
-          const result = drug.updateBenefitValue(drugCloseMaxBenefit)
+        it("should return benefit increased by 2", () => {
+          const herbalTeaCloseMaxBenefit = new Drug( 'Herbal Tea', -1, 47);
+          const result = strategy.updateBenefitValue(herbalTeaCloseMaxBenefit)
+          expect(result).toEqual({
+            name: 'Herbal Tea',
+            expiresIn: -1,
+            benefit: 49
+          })
+        });
+      });
+
+      describe('And the benefit is lower than max value (50)', () => {
+        it("should return max benefit", () => {
+          const herbalTeaCloseMaxBenefit = new Drug( 'Herbal Tea', -1, 49);
+          const result = strategy.updateBenefitValue(herbalTeaCloseMaxBenefit)
           expect(result).toEqual({
             name: 'Herbal Tea',
             expiresIn: -1,
@@ -109,7 +118,7 @@ describe("HerbalTea", () => {
     describe('When the name is invalid', () => {
       it("should throw and error", () => {
         try {
-          drug.updateExpiresInValue({name: 123213, expiresIn: 10, benefit: 10})
+          strategy.updateExpiresInValue({name: 123213, expiresIn: 10, benefit: 10})
         } catch (error) {
           expect(error).toBeInstanceOf(Error);
           expect(error).toHaveProperty('errors', {name: '"name" must be a string'});
@@ -120,7 +129,7 @@ describe("HerbalTea", () => {
     describe('When the expiresIn is invalid', () => {
       it("should throw and error", () => {
         try {
-          drug.updateExpiresInValue({name: 'Herbal Tea', expiresIn: '2022-03-22', benefit: 10})
+          strategy.updateExpiresInValue({name: 'Herbal Tea', expiresIn: '2022-03-22', benefit: 10})
         } catch (error) {
           expect(error).toBeInstanceOf(Error);
           expect(error).toHaveProperty('errors', {expiresIn: '"expiresIn" must be a number'});
@@ -131,7 +140,7 @@ describe("HerbalTea", () => {
     describe('When the benefit is invalid', () => {
       it("should throw and error", () => {
         try {
-          drug.updateExpiresInValue({name: 'Herbal Tea', expiresIn: 10, benefit: 'max'})
+          strategy.updateExpiresInValue({name: 'Herbal Tea', expiresIn: 10, benefit: 'max'})
         } catch (error) {
           expect(error).toBeInstanceOf(Error);
           expect(error).toHaveProperty('errors', {benefit: '"benefit" must be a number'});
@@ -141,7 +150,8 @@ describe("HerbalTea", () => {
 
     describe('When the data is valid', () => {
       it("should object with updated benefit", () => {
-        const result = drug.updateExpiresInValue(drug)
+        const herbalTea = new Drug( 'Herbal Tea', 1, 2);
+        const result = strategy.updateExpiresInValue(herbalTea)
         expect(result).toEqual({
           name: 'Herbal Tea',
           expiresIn: 0,

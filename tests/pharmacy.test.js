@@ -1,5 +1,4 @@
-import { Pharmacy } from "../lib/structures/Pharmacy";
-import { Drug } from "../lib/structures/Drug";
+import { Pharmacy, Drug } from "../Pharmacy";
 
 describe("Pharmacy", () => {
   it("should decrease the benefit and expiresIn to handle normal drug case", () => {

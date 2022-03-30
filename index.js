@@ -1,5 +1,4 @@
-import { Pharmacy } from "./lib/structures/Pharmacy";
-import { Drug } from "./lib/structures/Drug";
+import { Pharmacy, Drug } from "./Pharmacy";
 import fs from "fs";
 
 const drugs = [

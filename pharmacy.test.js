@@ -7,13 +7,29 @@ describe("Pharmacy", () => {
       [new Drug("test", 1, 2)]
     );
   });
+  it("should decrease the benefit and expiresIn", () => {
+    expect(new Pharmacy([new Drug("test", 51, -1)]).updateBenefitValue()).toEqual(
+      [new Drug("test", 50, 0)]
+    );
+  });
+  it("should decrease the benefit and expiresIn", () => {
+    expect(new Pharmacy([new Drug("test", 50, -1)]).updateBenefitValue()).toEqual(
+      [new Drug("test", 49, 0)]
+    );
+  });
+  it("should decrease the benefit and expiresIn", () => {
+    expect(new Pharmacy([new Drug("test", -1, 2)]).updateBenefitValue()).toEqual(
+      [new Drug("test", -2, 0)]
+    );
+  });
+
   it("should once the expiration date has passed, Benefit degrades twice as fast", () => {
     expect(new Pharmacy([new Drug("test", 0, 4)]).updateBenefitValue()).toEqual(
       [new Drug("test", -1, 2)]
     );
   });
 
-  // benefit never negative
+  // All drugs, benefit never negative
   it("should benefit never negative", () => {
     expect(new Pharmacy([new Drug("test", 0, 0)]).updateBenefitValue()).toEqual(
       [new Drug("test", -1, 0)]

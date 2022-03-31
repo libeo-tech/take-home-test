@@ -1,11 +1,3 @@
-export class Drug {
-  constructor(name, expiresIn, benefit) {
-    this.name = name;
-    this.expiresIn = expiresIn;
-    this.benefit = benefit;
-  }
-}
-
 const MIN_BENEFIT = 0;
 const MAX_BENEFIT = 50;
 
@@ -50,7 +42,7 @@ export class Pharmacy {
         // "Dafalgan" degrades in Benefit twice as fast as normal drugs.
         case "Dafalgan":
           drug.benefit = Math.max(drug.benefit - 2, MIN_BENEFIT);
-          break;  
+          break;
 
         // once the expiration date has passed, Benefit degrades twice as fast.
         default:

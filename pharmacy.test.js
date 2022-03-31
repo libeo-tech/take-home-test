@@ -1,4 +1,5 @@
-import { Drug, Pharmacy } from "./pharmacy";
+import { Pharmacy } from "./pharmacy";
+import { Drug } from "./drug";
 
 describe("Pharmacy", () => {
   // ALL drugs, general rules
@@ -8,19 +9,19 @@ describe("Pharmacy", () => {
     );
   });
   it("should decrease the benefit and expiresIn", () => {
-    expect(new Pharmacy([new Drug("test", 51, -1)]).updateBenefitValue()).toEqual(
-      [new Drug("test", 50, 0)]
-    );
+    expect(
+      new Pharmacy([new Drug("test", 51, -1)]).updateBenefitValue()
+    ).toEqual([new Drug("test", 50, 0)]);
   });
   it("should decrease the benefit and expiresIn", () => {
-    expect(new Pharmacy([new Drug("test", 50, -1)]).updateBenefitValue()).toEqual(
-      [new Drug("test", 49, 0)]
-    );
+    expect(
+      new Pharmacy([new Drug("test", 50, -1)]).updateBenefitValue()
+    ).toEqual([new Drug("test", 49, 0)]);
   });
   it("should decrease the benefit and expiresIn", () => {
-    expect(new Pharmacy([new Drug("test", -1, 2)]).updateBenefitValue()).toEqual(
-      [new Drug("test", -2, 0)]
-    );
+    expect(
+      new Pharmacy([new Drug("test", -1, 2)]).updateBenefitValue()
+    ).toEqual([new Drug("test", -2, 0)]);
   });
 
   it("should once the expiration date has passed, Benefit degrades twice as fast", () => {

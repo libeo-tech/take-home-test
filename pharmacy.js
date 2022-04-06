@@ -1,8 +1,11 @@
 export class Drug {
-  constructor(name, expiresIn, benefit) {
+  constructor(name, expiresIn, benefit, benefitUpdateValue = -1, expirationUpdateValue = 1, benefitAcceleration = null) {
     this.name = name;
     this.expiresIn = expiresIn;
     this.benefit = benefit;
+    this.benefitUpdateValue = benefitUpdateValue
+    this.expirationUpdateValue = expirationUpdateValue
+    this.benefitAcceleration = benefitAcceleration
   }
 }
 
@@ -11,56 +14,27 @@ export class Pharmacy {
     this.drugs = drugs;
   }
   updateBenefitValue() {
-    for (var i = 0; i < this.drugs.length; i++) {
-      if (
-        this.drugs[i].name != "Herbal Tea" &&
-        this.drugs[i].name != "Fervex"
-      ) {
-        if (this.drugs[i].benefit > 0) {
-          if (this.drugs[i].name != "Magic Pill") {
-            this.drugs[i].benefit = this.drugs[i].benefit - 1;
-          }
-        }
-      } else {
-        if (this.drugs[i].benefit < 50) {
-          this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          if (this.drugs[i].name == "Fervex") {
-            if (this.drugs[i].expiresIn < 11) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-            if (this.drugs[i].expiresIn < 6) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-          }
-        }
-      }
-      if (this.drugs[i].name != "Magic Pill") {
-        this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
-      }
-      if (this.drugs[i].expiresIn < 0) {
-        if (this.drugs[i].name != "Herbal Tea") {
-          if (this.drugs[i].name != "Fervex") {
-            if (this.drugs[i].benefit > 0) {
-              if (this.drugs[i].name != "Magic Pill") {
-                this.drugs[i].benefit = this.drugs[i].benefit - 1;
-              }
-            }
-          } else {
-            this.drugs[i].benefit =
-              this.drugs[i].benefit - this.drugs[i].benefit;
-          }
-        } else {
-          if (this.drugs[i].benefit < 50) {
-            this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          }
-        }
-      }
-    }
+    return this.drugs.map((drug) => {
+      drug.expiresIn -= drug.expirationUpdateValue
 
-    return this.drugs;
+      if (drug.benefitAcceleration && Object.keys(drug.benefitAcceleration).includes(drug.expiresIn.toString())) {
+        drug.benefitUpdateValue = drug.benefitAcceleration[drug.expiresIn]
+      }
+
+      if (drug.expiresIn >= 0 && (drug.benefit > 0 && drug.benefit < 50)) {
+        // if drug has not expired and benefit is between 0 and 50, update benefit
+        drug.benefit += drug.benefitUpdateValue
+      }
+      else if (drug.expiresIn < 0 && (drug.benefit > 0 && drug.benefit < 50)) {
+        // if drug has expired and benefit is between 0 and 50, update benefit twice faster
+        drug.benefit += drug.benefitUpdateValue * 2
+      }
+
+      // if benefit has been updated but is not between 0 and 50, update benefit
+      if (drug.benefit < 0) drug.benefit = 0
+      if (drug.benefit > 50) drug.benefit = 50
+
+      return drug
+    })
   }
 }

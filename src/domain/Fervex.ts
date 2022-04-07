@@ -9,20 +9,16 @@ export class Fervex extends Drug {
     }
 
     private constructor(expiresIn: number, benefit: number) {
-        super();
-
-        this.name = "Fervex";
-        this.expiresIn = expiresIn;
-        this.benefit = benefit;
+        super("Fervex", expiresIn, benefit);
     }
 
     public updateExpiredDateAndBenefitAfterOneDay(): void {
         this.expiresIn -= 1;
-        this.benefit = this.GetNewBenefit();
+        this.setBenefit(this.getNewBenefit());
     }
 
-    private GetNewBenefit(): number {
-        if(this.expiresIn <= 0)
+    private getNewBenefit(): number {
+        if(this.expiresIn < 0)
             return 0;
         else if(this.expiresIn <= 5)
             return this.benefit + (this.defaultBenefitIncrease * 3);

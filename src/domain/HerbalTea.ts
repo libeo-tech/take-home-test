@@ -10,20 +10,16 @@ export class HerbalTea extends Drug {
     }
 
     private constructor(expiresIn: number, benefit: number) {
-        super();
-
-        this.name = "Herbal Tea";
-        this.expiresIn = expiresIn;
-        this.benefit = benefit;
+        super("Herbal Tea", expiresIn, benefit);
     }
 
     public updateExpiredDateAndBenefitAfterOneDay(): void {
         this.expiresIn -= 1;
-        this.benefit = this.benefit + this.getNewBenefitIncrease();  
+        this.setBenefit(this.getNewBenefit());  
     }
 
-    private getNewBenefitIncrease() : number {
-        return this.hasExpired ? this.defaultBenefitIncrease * 2 : this.defaultBenefitIncrease;
+    private getNewBenefit() : number {
+        return this.benefit + (this.hasExpired ? this.defaultBenefitIncrease * 2 : this.defaultBenefitIncrease);
     }
 }
 

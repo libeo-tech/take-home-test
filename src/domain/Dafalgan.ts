@@ -10,19 +10,15 @@ export class Dafalgan extends Drug {
     }
 
     private constructor(expiresIn: number, benefit: number) {
-        super();
-
-        this.name = "Dafalgan";
-        this.expiresIn = expiresIn;
-        this.benefit = benefit;
+        super("Dafalgan", expiresIn, benefit);
     }
 
     public updateExpiredDateAndBenefitAfterOneDay(): void {
         this.expiresIn -= 1;
-        this.benefit = this.benefit - this.getNewBenefitIncrease();
+        this.setBenefit(this.getNewBenefit());
     }
 
-    private getNewBenefitIncrease(): number {
-        return this.hasExpired ? this.defaultBenefitDecrease * 2 : this.defaultBenefitDecrease;
+    private getNewBenefit(): number {
+        return this.benefit - (this.hasExpired ? this.defaultBenefitDecrease * 2 : this.defaultBenefitDecrease);
     }
 }

@@ -9,19 +9,15 @@ export class NormalDrug extends Drug  {
     }
 
     private constructor(name: string, expiresIn: number, benefit: number) {
-        super();
-        
-        this.name = name;
-        this.expiresIn = expiresIn;
-        this.benefit = benefit;
+        super(name, expiresIn, benefit);
     }
 
     public updateExpiredDateAndBenefitAfterOneDay(): void {
         this.expiresIn -= 1;
-        this.benefit = Math.max(this.benefit - this.getNewBenefitDecrease(), this.minimumBenefit);  
+        this.setBenefit(this.getNewBenefit());  
     }
 
-    private getNewBenefitDecrease() : number {
-        return this.hasExpired ? this.defaultBenefitDecrease * 2 : this.defaultBenefitDecrease;
+    private getNewBenefit() : number {
+        return this.benefit - (this.hasExpired ? this.defaultBenefitDecrease * 2 : this.defaultBenefitDecrease);
     }
 }

@@ -8,15 +8,9 @@ export class MagicPill extends Drug {
     }
 
     private constructor(expiresIn: number, benefit: number) {
-        super();
-
-        this.name = "Magic Pill";
-        this.expiresIn = expiresIn;
-        this.benefit = benefit;
+        super("Magic Pill", expiresIn, benefit);
     }
 
-    public updateExpiredDateAndBenefitAfterOneDay(): void {
-        this.expiresIn = Math.max(0, this.expiresIn - 1);
-    }
+    public updateExpiredDateAndBenefitAfterOneDay(): void { }
 
 }

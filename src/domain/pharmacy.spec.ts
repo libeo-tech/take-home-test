@@ -73,7 +73,7 @@ describe("Pharmacy update the benefit drugs", () => {
     
     updateBenefitDrugsOfPharmacyAfterNDays(pharmacy, 10);
 
-    expect(pharmacy.drugs).toEqual([MagicPill.New(10, 20)]);
+    expect(pharmacy.drugs).toEqual([MagicPill.New(20, 20)]);
   });
 
   test("The magical pill should not be expired", () => {
@@ -81,7 +81,7 @@ describe("Pharmacy update the benefit drugs", () => {
     
     updateBenefitDrugsOfPharmacyAfterNDays(pharmacy, 20);
 
-    expect(pharmacy.drugs).toEqual([MagicPill.New(0, 20)]);
+    expect(pharmacy.drugs).toEqual([MagicPill.New(10, 20)]);
   });
 
   
@@ -110,11 +110,11 @@ describe("Pharmacy update the benefit drugs", () => {
   });
 
   test("Fervex benefit is 0 when date has expired", () => {
-    const pharmacy = Pharmacy.Rehydrate([Fervex.New(1, 5)]);
+    const pharmacy = Pharmacy.Rehydrate([Fervex.New(0, 5)]);
     
     updateBenefitDrugsOfPharmacyAfterNDays(pharmacy, 1);
 
-    expect(pharmacy.drugs).toEqual([Fervex.New(0, 0)]);
+    expect(pharmacy.drugs).toEqual([Fervex.New(-1, 0)]);
   });
 
   test("Dafalgan benefit decrease is twice fast than normal drug", () => {

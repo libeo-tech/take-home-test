@@ -12,6 +12,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
+    "golden": "jest -- golden.test.js",
     "start": "babel-node index.js"
   },
   "devDependencies": {

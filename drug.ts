@@ -21,6 +21,8 @@ export class Drug implements DrugInterface {
     if (this.benefit < 0) this.benefit = 0;
   }
 
+  /* cela marche dans le cadre de l'exercice, 
+  cependant ce n'est pas la meilleur façon de faire si de nouveaux cas particuliers arrivent */
   canUpdateBenefit() {
     return (
       (this.benefit < 50 && this.benefit > 0) ||

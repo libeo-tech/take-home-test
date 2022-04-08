@@ -3,9 +3,10 @@ import fs from "fs";
 
 const drugs = [
   new Drug("Doliprane", 20, 30),
-  new Drug("Herbal Tea", 10, 5),
-  new Drug("Fervex", 5, 40),
-  new Drug("Magic Pill", 15, 40)
+  new Drug("Herbal Tea", 10, 5, -1, 1),
+  new Drug("Fervex", 8, 40, -1, 1, { 10: 2, 5: 3, 0: -50 }),
+  new Drug("Magic Pill", 15, 40, 0, 0),
+  new Drug("Dafalgan", 20, 30, -1, -2)
 ];
 const trial = new Pharmacy(drugs);
 
@@ -18,9 +19,9 @@ for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
 /* eslint-disable no-console */
 fs.writeFile("output.txt", log.toString(), err => {
   if (err) {
-    console.log("error");
+    console.log("error 1");
   } else {
-    console.log("success");
+    console.log("success 1");
   }
 });
 /* eslint-enable no-console */

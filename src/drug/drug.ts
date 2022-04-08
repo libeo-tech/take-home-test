@@ -1,4 +1,4 @@
-interface DrugInterface {
+export interface DrugInterface {
   name: string;
   expiresIn: number;
   benefit: number;

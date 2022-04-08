@@ -1,6 +1,12 @@
-import { benefitEvolutionRules, DEFAULT, MAGIC_PILL } from "../drug/drug";
+import { benefitEvolutionRules, DEFAULT, Drug, MAGIC_PILL } from "../drug/drug";
 
-export class Pharmacy {
+interface PharmacyInterface {
+  drugs: Drug[];
+  updateBenefitValue: () => Drug[];
+}
+
+export class Pharmacy implements PharmacyInterface {
+  drugs: Drug[];
   constructor(drugs = []) {
     this.drugs = drugs;
   }

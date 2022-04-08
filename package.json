@@ -12,7 +12,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "start": "babel-node index.js"
+    "start": "babel-node --extensions \".ts\" index.ts"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -28,5 +28,8 @@
     "jest": "24.8.0",
     "prettier": "^1.14.3",
     "regenerator-runtime": "^0.12.1"
+  },
+  "dependencies": {
+    "@babel/preset-typescript": "^7.16.7"
   }
 }

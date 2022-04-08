@@ -2,6 +2,13 @@
 
 import fs from "fs";
 
+class LoggerError extends Error {
+  constructor(error) {
+    super();
+    this.message = error;
+  }
+}
+
 export class Logger {
   _log = [];
 
@@ -9,13 +16,17 @@ export class Logger {
     this._log = log;
   }
 
-  writeLog(log) {
-    fs.writeFile("output.txt", this._log.toString(), err => {
-      if (err) {
-        console.log("error");
-      } else {
-        console.log("success");
-      }
-    });
+  writeLog() {
+    try {
+      fs.writeFile("output.txt", this._log.toString(), err => {
+        if (err) {
+          console.log("error");
+        } else {
+          console.log("success");
+        }
+      });
+    } catch (e) {
+      return new LoggerError(e);
+    }
   }
 }

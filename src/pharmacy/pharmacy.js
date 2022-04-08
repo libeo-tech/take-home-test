@@ -1,4 +1,4 @@
-import { benefitEvolutionRules, DEFAULT, MAGIC_PILL } from "./drug";
+import { benefitEvolutionRules, DEFAULT, MAGIC_PILL } from "../drug/drug";
 
 export class Pharmacy {
   constructor(drugs = []) {

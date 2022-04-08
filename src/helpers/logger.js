@@ -10,7 +10,7 @@ class LoggerError extends Error {
 }
 
 export class Logger {
-  _log = [];
+  _log;
 
   pushLog(log) {
     this._log = log;

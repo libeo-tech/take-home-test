@@ -21,4 +21,9 @@ export const items = [
     expiresIn: 15,
     benefit: 40
   },
+  {
+    name: "Dafalgan",
+    expiresIn: 15,
+    benefit: 20
+  },
 ];

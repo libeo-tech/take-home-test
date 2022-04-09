@@ -44,9 +44,27 @@ describe("Pharmacy", () => {
     ]);
   });
 
+  it("should increase the benefit by 1 if drug is Fervex and expiresIn is more than 10 days", () => {
+    expect(new Pharmacy([new Drug("Fervex", 14, 3)]).updateDrugs()).toEqual([
+      new Drug("Fervex", 13, 4),
+    ]);
+  });
+
   it("should increase the benefit by 2 if drug is Fervex and expiresIn is less than 10 days", () => {
+    expect(new Pharmacy([new Drug("Fervex", 9, 3)]).updateDrugs()).toEqual([
+      new Drug("Fervex", 8, 5),
+    ]);
+  });
+
+  it("should increase the benefit by 3 if drug is Fervex and expiresIn is less than 5 days", () => {
     expect(new Pharmacy([new Drug("Fervex", 4, 3)]).updateDrugs()).toEqual([
-      new Drug("Fervex", 3, 2),
+      new Drug("Fervex", 3, 6),
+    ]);
+  });
+
+  it("should set the benefit to 0 if drug is Fervex and expiresIn has passed", () => {
+    expect(new Pharmacy([new Drug("Fervex", -1, 3)]).updateDrugs()).toEqual([
+      new Drug("Fervex", -2, 0),
     ]);
   });
 });

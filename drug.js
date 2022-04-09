@@ -37,6 +37,19 @@ export class Drug {
       case "Magic Pill":
         incrementor = 0;
         break;
+
+      case "Fervex":
+        if (this.expiresIn < 0) {
+          this.benefit = 0;
+          incrementor = 0;
+        } else if (this.expiresIn <= 5) {
+          incrementor = 3;
+        } else if (this.expiresIn <= 10) {
+          incrementor = 2;
+        } else {
+          incrementor = 1;
+        }
+        break;
     }
 
     if (this.expiresIn < 0) {

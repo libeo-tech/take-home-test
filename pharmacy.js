@@ -4,7 +4,11 @@ export class Pharmacy {
   }
 
   updateDrugs() {
-    this.drugs.map((drug) => drug.updateDrug());
+    console.log("drugs", this.drugs);
+    return this.drugs.map((drug) => {
+      console.log("Pdrug", drug);
+      return drug.updateDrug();
+    });
   }
 
   updateBenefitValue() {

@@ -14,18 +14,17 @@ export class Drug {
   }
 
   updateDrugExpiresIn() {
-    return this.expiresIn--;
+    return this.expiresIn - 1;
   }
 
   updateDrugBenefit() {
     let newBenefit;
 
     if (this.expiresIn < 0) {
-      newBenefit = this.benefit - 2);
+      newBenefit = this.benefit - 2;
     } else {
       newBenefit = this.benefit - 1;
     }
-
 
     return newBenefit > 0 ? newBenefit : 0;
   }

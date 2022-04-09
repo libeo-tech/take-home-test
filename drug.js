@@ -27,7 +27,7 @@ export class Drug {
 
   updateBenefit() {
     let newBenefit;
-    let incrementor = -1;
+    let incrementor;
 
     switch (this.name) {
       case "Herbal Tea":
@@ -50,6 +50,13 @@ export class Drug {
           incrementor = 1;
         }
         break;
+
+      case "Dafalgan":
+        incrementor = -2;
+        break;
+
+      default:
+        incrementor = -1;
     }
 
     if (this.expiresIn < 0) {

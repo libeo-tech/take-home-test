@@ -8,23 +8,33 @@ export class Drug {
   updateDrug() {
     return {
       name: this.name,
-      expiresIn: this.updateDrugExpiresIn(),
-      benefit: this.updateDrugBenefit(),
+      expiresIn: this.updateExpiresIn(),
+      benefit: this.updateBenefit(),
     };
   }
 
-  updateDrugExpiresIn() {
-    const newExpiresIn = this.expiresIn - 1;
+  updateExpiresIn() {
+    let newExpiresIn;
+
+    if (this.name === "Magic Pill") {
+      newExpiresIn = this.expiresIn;
+    } else {
+      newExpiresIn = this.expiresIn - 1;
+    }
 
     return newExpiresIn;
   }
 
-  updateDrugBenefit() {
+  updateBenefit() {
     let newBenefit;
     let incrementor = 1;
 
     if (this.name === "Herbal Tea") {
       incrementor = -incrementor;
+    }
+
+    if (this.name === "Magic Pill") {
+      incrementor = 0;
     }
 
     if (this.expiresIn < 0) {

@@ -33,6 +33,12 @@ export class Drug {
       newBenefit = this.benefit - incrementor;
     }
 
-    return newBenefit > 0 ? newBenefit : 0;
+    if (newBenefit < 0) {
+      return 0;
+    } else if (newBenefit > 50) {
+      return 50;
+    } else {
+      return newBenefit;
+    }
   }
 }

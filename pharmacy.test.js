@@ -31,4 +31,10 @@ describe("Pharmacy", () => {
       new Pharmacy([new Drug("Herbal Tea", -1, 3)]).updateBenefitValue()
     ).toEqual([new Drug("Herbal Tea", -2, 5)]);
   });
+
+  it("should increase the benefit until 50", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", 4, 50)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", 3, 50)]);
+  });
 });

@@ -13,15 +13,15 @@ export class Drug {
     };
   }
 
-  updateDrugExpiresIn = () => {
+  updateDrugExpiresIn() {
     return this.expiresIn--;
-  };
+  }
 
-  updateDrugBenefit = () => {
+  updateDrugBenefit() {
     if (this.expiresIn < 0) {
       return (this.benefit -= 2);
     }
 
     return this.benefit--;
-  };
+  }
 }

@@ -1,6 +1,5 @@
-import { Pharmacy } from "./pharmacy";
+import { Drug, Pharmacy } from "./pharmacy";
 import fs from "fs";
-import { Drug } from "./drug";
 
 const drugs = [
   new Drug("Doliprane", 20, 30),
@@ -13,7 +12,7 @@ const trial = new Pharmacy(drugs);
 const log = [];
 
 for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
-  log.push(JSON.stringify(trial.updateDrugs()));
+  log.push(JSON.stringify(trial.updateBenefitValue()));
 }
 
 /* eslint-disable no-console */

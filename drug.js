@@ -14,7 +14,9 @@ export class Drug {
   }
 
   updateDrugExpiresIn() {
-    return this.expiresIn - 1;
+    const newExpiresIn = this.expiresIn - 1;
+
+    return newExpiresIn;
   }
 
   updateDrugBenefit() {

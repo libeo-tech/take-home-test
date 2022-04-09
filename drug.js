@@ -21,11 +21,16 @@ export class Drug {
 
   updateDrugBenefit() {
     let newBenefit;
+    let incrementor = 1;
+
+    if (this.name === "Herbal Tea") {
+      incrementor = -incrementor;
+    }
 
     if (this.expiresIn < 0) {
-      newBenefit = this.benefit - 2;
+      newBenefit = this.benefit - 2 * incrementor;
     } else {
-      newBenefit = this.benefit - 1;
+      newBenefit = this.benefit - incrementor;
     }
 
     return newBenefit > 0 ? newBenefit : 0;

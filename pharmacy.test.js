@@ -19,4 +19,16 @@ describe("Pharmacy", () => {
       [new Drug("test", 1, 0)]
     );
   });
+
+  it("should increase the benefit for 'Herbal Tea'", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", 2, 3)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", 1, 4)]);
+  });
+
+  it("should increase the benefit for 'Herbal Tea' twice if expiresIn has passed", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", -1, 3)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", -2, 5)]);
+  });
 });

@@ -6,10 +6,13 @@ export class Drug {
   }
 
   updateDrug() {
+    this.expiresIn = this.updateExpiresIn();
+    this.benefit = this.updateBenefit();
+
     return {
       name: this.name,
-      expiresIn: this.updateExpiresIn(),
-      benefit: this.updateBenefit(),
+      expiresIn: this.expiresIn,
+      benefit: this.benefit,
     };
   }
 
@@ -81,8 +84,10 @@ export class Pharmacy {
   }
 
   updateBenefitValue() {
-    return this.drugs.map((drug) => {
+    this.drugs = this.drugs.map((drug) => {
       return drug.updateDrug();
     });
+
+    return this.drugs;
   }
 }

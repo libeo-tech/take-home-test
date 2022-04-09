@@ -3,6 +3,10 @@ export class Pharmacy {
     this.drugs = drugs;
   }
 
+  updateDrugs() {
+    this.drugs.map((drug) => drug.updateDrug());
+  }
+
   updateBenefitValue() {
     for (var i = 0; i < this.drugs.length; i++) {
       if (

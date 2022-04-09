@@ -14,14 +14,14 @@ export class Drug {
   }
 
   updateDrugExpiresIn = () => {
-    const newExpiresIn = this.expiresIn--;
-
-    return newExpiresIn;
+    return this.expiresIn--;
   };
 
   updateDrugBenefit = () => {
-    const newBenefit = this.benefit--;
+    if (this.expiresIn < 0) {
+      return (this.benefit -= 2);
+    }
 
-    return newBenefit;
+    return this.benefit--;
   };
 }

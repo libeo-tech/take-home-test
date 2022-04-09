@@ -27,20 +27,22 @@ export class Drug {
 
   updateBenefit() {
     let newBenefit;
-    let incrementor = 1;
+    let incrementor = -1;
 
-    if (this.name === "Herbal Tea") {
-      incrementor = -incrementor;
-    }
+    switch (this.name) {
+      case "Herbal Tea":
+        incrementor = 1;
+        break;
 
-    if (this.name === "Magic Pill") {
-      incrementor = 0;
+      case "Magic Pill":
+        incrementor = 0;
+        break;
     }
 
     if (this.expiresIn < 0) {
-      newBenefit = this.benefit - 2 * incrementor;
+      newBenefit = this.benefit + 2 * incrementor;
     } else {
-      newBenefit = this.benefit - incrementor;
+      newBenefit = this.benefit + incrementor;
     }
 
     if (newBenefit < 0) {

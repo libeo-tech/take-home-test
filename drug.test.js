@@ -24,3 +24,22 @@ describe("Herbal Tea",()=>{
         expect(new Drug("Herbal Tea", 0, 49).updateDrug()).toEqual(new Drug("Herbal Tea", -1, 50));
     })
 })
+
+describe("Fervex",()=>{
+    it("should increase the benefit by 1 and decrease expiresIn", () => {
+        expect(new Drug("Fervex", 15, 10).updateDrug()).toEqual(new Drug("Fervex", 14, 11));
+    });
+    it("should not increase the benefit over 50 and decrease expiresIn", () => {
+        expect(new Drug("Fervex", 15, 50).updateDrug()).toEqual(new Drug("Fervex", 14, 50));
+    });
+    it("should increase the benefit by 2 and decrease expiresIn", () => {
+        expect(new Drug("Fervex", 10, 40).updateDrug()).toEqual(new Drug("Fervex", 9, 42));
+    });
+    it("should increase the benefit by 3 and decrease expiresIn", () => {
+        expect(new Drug("Fervex", 4, 40).updateDrug()).toEqual(new Drug("Fervex", 3, 43));
+    });
+    it("should initialize benefit to 0 and decrease expiresIn", () => {
+        expect(new Drug("Fervex", 0, 34).updateDrug()).toEqual(new Drug("Fervex", -1, 0));
+    });
+
+})

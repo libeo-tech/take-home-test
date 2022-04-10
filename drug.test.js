@@ -49,3 +49,12 @@ describe("Magic Pill",()=>{
         expect(new Drug("Magic Pill", 15, 10).updateDrug()).toEqual(new Drug("Magic Pill", 15, 10));
     });
 })
+
+describe("Dafalgon",()=>{
+    it("decrease benefit by 2 and decrease expiresIn ", () => {
+        expect(new Drug("Dafalgon", 15, 10).updateDrug()).toEqual(new Drug("Dafalgon", 14, 8));
+    });
+    it("decrease benefit by 2 and decrease expiresIn ", () => {
+        expect(new Drug("Dafalgon", 15, 1).updateDrug()).toEqual(new Drug("Dafalgon", 14, 0));
+    });
+})

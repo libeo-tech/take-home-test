@@ -7,11 +7,13 @@ export class Drug {
     }
     incrementBenefit(cout=1)
     {
-        this.benefit+=cout;
+        if(this.benefit+cout>=50) this.benefit=50
+        else this.benefit+=cout;
     }
     decrementBenefit(cout=1)
     {
-        this.benefit-=cout;
+        if(this.benefit-cout<=0) this.benefit=0;
+        else this.benefit-=cout;
     }
     decrementexpiresIn()
     {

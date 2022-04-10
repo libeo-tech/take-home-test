@@ -20,8 +20,8 @@ export class Drug {
       this.updateFervexBenefitValue();
     } else if (this.name === MAGIC_PILL) {
       this.updateMagicPillBenefitValue();
-    } else if (this.benefit > 0) {
-      this.benefit = this.benefit - 1;
+    } else {
+      this.updateBenefit(-1);
     }
 
     this.updateExpiration();
@@ -32,28 +32,16 @@ export class Drug {
   }
 
   private updateHerbalTeaBenefitValue(): void {
-    if (this.benefit < MAX_BENEFIT) {
-      this.benefit = this.benefit + 1;
-    }
+    this.updateBenefit(1);
   }
 
   private updateFervexBenefitValue(): void {
-    if (this.benefit < MAX_BENEFIT) {
-      this.benefit = this.benefit + 1;
-
-      if (
-        this.expiresIn <= DOUBLE_BENEFIT_UNDER_DAY_EXPIRATION &&
-        this.benefit < MAX_BENEFIT
-      ) {
-        this.benefit = this.benefit + 1;
-      }
-
-      if (
-        this.expiresIn <= TRIPLE_BENEFIT_UNDER_DAY_EXPIRATION &&
-        this.benefit < MAX_BENEFIT
-      ) {
-        this.benefit = this.benefit + 1;
-      }
+    if (this.expiresIn <= TRIPLE_BENEFIT_UNDER_DAY_EXPIRATION) {
+      this.updateBenefit(3);
+    } else if (this.expiresIn <= DOUBLE_BENEFIT_UNDER_DAY_EXPIRATION) {
+      this.updateBenefit(2);
+    } else {
+      this.updateBenefit(1);
     }
   }
 
@@ -69,16 +57,16 @@ export class Drug {
     } else if (this.name === MAGIC_PILL) {
       this.updateMagicPillExpiration();
     } else {
-      this.expiresIn = this.expiresIn - 1;
+      this.expiresIn -= 1;
     }
   }
 
   private updateHerbalTeaExpiration(): void {
-    this.expiresIn = this.expiresIn - 1;
+    this.expiresIn -= 1;
   }
 
   private updateFervexExpiration(): void {
-    this.expiresIn = this.expiresIn - 1;
+    this.expiresIn -= 1;
   }
 
   private updateMagicPillExpiration(): void {
@@ -93,16 +81,12 @@ export class Drug {
     } else if (this.name === MAGIC_PILL) {
       this.updateExpiredMagicPillBenefitValue();
     } else {
-      if (this.benefit > 0) {
-        this.benefit = this.benefit - 1;
-      }
+      this.updateBenefit(-1);
     }
   }
 
   private updateExpiredHerbalTeaBenefitValue(): void {
-    if (this.benefit < MAX_BENEFIT) {
-      this.benefit = this.benefit + 1;
-    }
+    this.updateBenefit(1);
   }
 
   private updateExpiredFervexBenefitValue(): void {
@@ -111,5 +95,14 @@ export class Drug {
 
   private updateExpiredMagicPillBenefitValue(): void {
     // Do nothing: "Magic pill" drug never lose benefit
+  }
+
+  private updateBenefit(value: number): void {
+    const newBenefitValue = this.benefit + value;
+
+    this.benefit =
+      value < 0
+        ? Math.max(0, newBenefitValue)
+        : Math.min(MAX_BENEFIT, newBenefitValue);
   }
 }

@@ -12,9 +12,11 @@
   },
   "scripts": {
     "lint": "eslint .",
+    "lint-fix": "yarn lint --fix",
     "test": "jest",
     "golden": "jest -- golden.test.ts",
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "postinstall": "husky install"
   },
   "devDependencies": {
     "@types/jest": "27.4.1",
@@ -24,6 +26,7 @@
     "eslint": "8.13.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
+    "husky": "7.0.4",
     "jest": "27.5.1",
     "prettier": "2.6.2",
     "regenerator-runtime": "0.12.1",

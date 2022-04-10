@@ -30,12 +30,10 @@ export class Pharmacy {
       Pharmacy.updateHerbalTeaBenefitValue(drug);
     } else if (drug.name === FERVEX) {
       Pharmacy.updateFervexBenefitValue(drug);
-    } else {
-      if (drug.benefit > 0) {
-        if (drug.name != MAGIC_PILL) {
-          drug.benefit = drug.benefit - 1;
-        }
-      }
+    } else if (drug.name === MAGIC_PILL) {
+      Pharmacy.updateMagicPillBenefitValue();
+    } else if (drug.benefit > 0) {
+      drug.benefit = drug.benefit - 1;
     }
   }
 
@@ -65,12 +63,18 @@ export class Pharmacy {
     }
   }
 
+  private static updateMagicPillBenefitValue(): void {
+    // Do nothing: "Magic pill" drug never lose benefit
+  }
+
   private static updateDrugExpiration(drug: Drug): void {
     if (drug.name === HERBAL_TEA) {
       Pharmacy.updateHerbalTeaExpiration(drug);
     } else if (drug.name === FERVEX) {
       Pharmacy.updateFervexExpiration(drug);
-    } else if (drug.name != MAGIC_PILL) {
+    } else if (drug.name === MAGIC_PILL) {
+      Pharmacy.updateMagicPillExpiration();
+    } else {
       drug.expiresIn = drug.expiresIn - 1;
     }
   }
@@ -83,16 +87,20 @@ export class Pharmacy {
     drug.expiresIn = drug.expiresIn - 1;
   }
 
+  private static updateMagicPillExpiration(): void {
+    // Do nothing: "Magic pill" drug never expires
+  }
+
   private static updateExpiredDrugBenefitValue(drug: Drug): void {
     if (drug.name === HERBAL_TEA) {
       Pharmacy.updateExpiredHerbalTeaBenefitValue(drug);
     } else if (drug.name === FERVEX) {
       Pharmacy.updateExpiredFervexBenefitValue(drug);
+    } else if (drug.name === MAGIC_PILL) {
+      Pharmacy.updateExpiredMagicPillBenefitValue();
     } else {
       if (drug.benefit > 0) {
-        if (drug.name != MAGIC_PILL) {
-          drug.benefit = drug.benefit - 1;
-        }
+        drug.benefit = drug.benefit - 1;
       }
     }
   }
@@ -105,5 +113,9 @@ export class Pharmacy {
 
   private static updateExpiredFervexBenefitValue(drug: Drug): void {
     drug.benefit = drug.benefit - drug.benefit;
+  }
+
+  private static updateExpiredMagicPillBenefitValue(): void {
+    // Do nothing: "Magic pill" drug never lose benefit
   }
 }

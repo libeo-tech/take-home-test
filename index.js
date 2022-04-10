@@ -1,5 +1,5 @@
-import {  Pharmacy } from "./pharmacy";
-import { Drug } from "./drug";
+import {  Pharmacy } from "./pharmacy.js";
+import { Drug } from "./drug.js";
 import fs from "fs";
 
 const drugs = [

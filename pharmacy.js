@@ -9,11 +9,7 @@ export class Drug {
     this.expiresIn = this.updateExpiresIn();
     this.benefit = this.updateBenefit();
 
-    return {
-      name: this.name,
-      expiresIn: this.expiresIn,
-      benefit: this.benefit,
-    };
+    return this;
   }
 
   updateExpiresIn() {

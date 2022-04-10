@@ -1,10 +1,4 @@
-export class Drug {
-  constructor(
-    public name: string,
-    public expiresIn: number,
-    public benefit: number
-  ) {}
-}
+import { Drug } from "./drug";
 
 export class Pharmacy {
   constructor(private readonly drugs: Drug[] = []) {}

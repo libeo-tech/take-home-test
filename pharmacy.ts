@@ -28,26 +28,12 @@ export class Pharmacy {
   private static updateDrugBenefitValue(drug: Drug): void {
     if (drug.name === HERBAL_TEA) {
       Pharmacy.updateHerbalTeaBenefitValue(drug);
-    } else if (drug.name != FERVEX) {
+    } else if (drug.name === FERVEX) {
+      Pharmacy.updateFervexBenefitValue(drug);
+    } else {
       if (drug.benefit > 0) {
         if (drug.name != MAGIC_PILL) {
           drug.benefit = drug.benefit - 1;
-        }
-      }
-    } else {
-      if (drug.benefit < MAX_BENEFIT) {
-        drug.benefit = drug.benefit + 1;
-        if (drug.name == FERVEX) {
-          if (drug.expiresIn <= DOUBLE_BENEFIT_UNDER_DAY_EXPIRATION) {
-            if (drug.benefit < MAX_BENEFIT) {
-              drug.benefit = drug.benefit + 1;
-            }
-          }
-          if (drug.expiresIn <= TRIPLE_BENEFIT_UNDER_DAY_EXPIRATION) {
-            if (drug.benefit < MAX_BENEFIT) {
-              drug.benefit = drug.benefit + 1;
-            }
-          }
         }
       }
     }
@@ -59,9 +45,31 @@ export class Pharmacy {
     }
   }
 
+  private static updateFervexBenefitValue(drug: Drug): void {
+    if (drug.benefit < MAX_BENEFIT) {
+      drug.benefit = drug.benefit + 1;
+
+      if (
+        drug.expiresIn <= DOUBLE_BENEFIT_UNDER_DAY_EXPIRATION &&
+        drug.benefit < MAX_BENEFIT
+      ) {
+        drug.benefit = drug.benefit + 1;
+      }
+
+      if (
+        drug.expiresIn <= TRIPLE_BENEFIT_UNDER_DAY_EXPIRATION &&
+        drug.benefit < MAX_BENEFIT
+      ) {
+        drug.benefit = drug.benefit + 1;
+      }
+    }
+  }
+
   private static updateDrugExpiration(drug: Drug): void {
     if (drug.name === HERBAL_TEA) {
       Pharmacy.updateHerbalTeaExpiration(drug);
+    } else if (drug.name === FERVEX) {
+      Pharmacy.updateFervexExpiration(drug);
     } else if (drug.name != MAGIC_PILL) {
       drug.expiresIn = drug.expiresIn - 1;
     }
@@ -71,18 +79,20 @@ export class Pharmacy {
     drug.expiresIn = drug.expiresIn - 1;
   }
 
+  private static updateFervexExpiration(drug: Drug): void {
+    drug.expiresIn = drug.expiresIn - 1;
+  }
+
   private static updateExpiredDrugBenefitValue(drug: Drug): void {
     if (drug.name === HERBAL_TEA) {
       Pharmacy.updateExpiredHerbalTeaBenefitValue(drug);
+    } else if (drug.name === FERVEX) {
+      Pharmacy.updateExpiredFervexBenefitValue(drug);
     } else {
-      if (drug.name != FERVEX) {
-        if (drug.benefit > 0) {
-          if (drug.name != MAGIC_PILL) {
-            drug.benefit = drug.benefit - 1;
-          }
+      if (drug.benefit > 0) {
+        if (drug.name != MAGIC_PILL) {
+          drug.benefit = drug.benefit - 1;
         }
-      } else {
-        drug.benefit = drug.benefit - drug.benefit;
       }
     }
   }
@@ -91,5 +101,9 @@ export class Pharmacy {
     if (drug.benefit < MAX_BENEFIT) {
       drug.benefit = drug.benefit + 1;
     }
+  }
+
+  private static updateExpiredFervexBenefitValue(drug: Drug): void {
+    drug.benefit = drug.benefit - drug.benefit;
   }
 }

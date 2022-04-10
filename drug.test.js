@@ -33,7 +33,7 @@ describe("Fervex",()=>{
         expect(new Drug("Fervex", 15, 50).updateDrug()).toEqual(new Drug("Fervex", 14, 50));
     });
     it("should increase the benefit by 2 and decrease expiresIn", () => {
-        expect(new Drug("Fervex", 10, 40).updateDrug()).toEqual(new Drug("Fervex", 9, 42));
+        expect(new Drug("Fervex", 9, 40).updateDrug()).toEqual(new Drug("Fervex", 8, 42));
     });
     it("should increase the benefit by 3 and decrease expiresIn", () => {
         expect(new Drug("Fervex", 4, 40).updateDrug()).toEqual(new Drug("Fervex", 3, 43));
@@ -55,6 +55,6 @@ describe("Dafalgon",()=>{
         expect(new Drug("Dafalgon", 15, 10).updateDrug()).toEqual(new Drug("Dafalgon", 14, 8));
     });
     it("decrease benefit by 2 and decrease expiresIn ", () => {
-        expect(new Drug("Dafalgon", 15, 1).updateDrug()).toEqual(new Drug("Dafalgon", 14, 0));
+        expect(new Drug("Dafalgon", 15, 0).updateDrug()).toEqual(new Drug("Dafalgon", 14, 0));
     });
 })

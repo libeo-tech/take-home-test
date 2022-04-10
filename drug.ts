@@ -1,6 +1,7 @@
 const HERBAL_TEA = "Herbal Tea";
 const FERVEX = "Fervex";
 const MAGIC_PILL = "Magic Pill";
+const DAFALGAN = "Dafalgan";
 
 const MAX_BENEFIT = 50;
 const DOUBLE_BENEFIT_UNDER_DAY_EXPIRATION = 10;
@@ -20,6 +21,8 @@ export class Drug {
       this.updateFervexBenefitValue();
     } else if (this.name === MAGIC_PILL) {
       this.updateMagicPillBenefitValue();
+    } else if (this.name === DAFALGAN) {
+      this.updateDafalganBenefitValue();
     } else {
       this.updateBenefit(-1);
     }
@@ -49,6 +52,10 @@ export class Drug {
     // Do nothing: "Magic pill" drug never lose benefit
   }
 
+  private updateDafalganBenefitValue(): void {
+    this.updateBenefit(-2);
+  }
+
   private updateExpiration(): void {
     if (this.name === HERBAL_TEA) {
       this.updateHerbalTeaExpiration();
@@ -56,6 +63,8 @@ export class Drug {
       this.updateFervexExpiration();
     } else if (this.name === MAGIC_PILL) {
       this.updateMagicPillExpiration();
+    } else if (this.name === DAFALGAN) {
+      this.updateDafalganExpiration();
     } else {
       this.expiresIn -= 1;
     }
@@ -73,6 +82,10 @@ export class Drug {
     // Do nothing: "Magic pill" drug never expires
   }
 
+  private updateDafalganExpiration(): void {
+    this.expiresIn -= 1;
+  }
+
   private updateExpiredBenefitValue(): void {
     if (this.name === HERBAL_TEA) {
       this.updateExpiredHerbalTeaBenefitValue();
@@ -80,6 +93,8 @@ export class Drug {
       this.updateExpiredFervexBenefitValue();
     } else if (this.name === MAGIC_PILL) {
       this.updateExpiredMagicPillBenefitValue();
+    } else if (this.name === DAFALGAN) {
+      this.updateExpiredDafalganBenefitValue();
     } else {
       this.updateBenefit(-1);
     }
@@ -95,6 +110,10 @@ export class Drug {
 
   private updateExpiredMagicPillBenefitValue(): void {
     // Do nothing: "Magic pill" drug never lose benefit
+  }
+
+  private updateExpiredDafalganBenefitValue(): void {
+    this.updateBenefit(-2);
   }
 
   private updateBenefit(value: number): void {

@@ -102,3 +102,18 @@ describe('"Fervex" Drug', () => {
     expect(drug.benefit).toEqual(0);
   });
 });
+
+
+describe('"Dafalgan" Drug', () => {
+  it("should decrease benefit as twice as fast as normal drugs", () => {
+    const dafalgan = new Drug("Dafalgan", 2, 3);
+    dafalgan.updateBenefitValue();
+
+    expect(dafalgan.benefit).toEqual(1);
+
+    const expiredDafalgan = new Drug("Dafalgan", 0, 5);
+    expiredDafalgan.updateBenefitValue();
+
+    expect(expiredDafalgan.benefit).toEqual(1);
+  });
+});

@@ -43,3 +43,9 @@ describe("Fervex",()=>{
     });
 
 })
+
+describe("Magic Pill",()=>{
+    it("never expires nor decreases in Benefit. ", () => {
+        expect(new Drug("Magic Pill", 15, 10).updateDrug()).toEqual(new Drug("Magic Pill", 15, 10));
+    });
+})

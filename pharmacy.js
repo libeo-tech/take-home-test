@@ -12,53 +12,60 @@ export class Pharmacy {
   }
   updateBenefitValue() {
     for (var i = 0; i < this.drugs.length; i++) {
-      if (
-        this.drugs[i].name != "Herbal Tea" &&
-        this.drugs[i].name != "Fervex"
-      ) {
-        if (this.drugs[i].benefit > 0) {
-          if (this.drugs[i].name != "Magic Pill") {
-            this.drugs[i].benefit = this.drugs[i].benefit - 1;
-          }
-        }
-      } else {
-        if (this.drugs[i].benefit < 50) {
-          this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          if (this.drugs[i].name == "Fervex") {
-            if (this.drugs[i].expiresIn < 11) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-            if (this.drugs[i].expiresIn < 6) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-          }
-        }
+      const drugName = this.drugs[i].name;
+      if(drugName == "Magic Pill") {
+          continue;
       }
-      if (this.drugs[i].name != "Magic Pill") {
-        this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
-      }
-      if (this.drugs[i].expiresIn < 0) {
-        if (this.drugs[i].name != "Herbal Tea") {
-          if (this.drugs[i].name != "Fervex") {
-            if (this.drugs[i].benefit > 0) {
-              if (this.drugs[i].name != "Magic Pill") {
-                this.drugs[i].benefit = this.drugs[i].benefit - 1;
+      // expiration evolution
+      this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
+      const expirationTime = this.drugs[i].expiresIn;
+      let evolutionValue = (expirationTime < 0)? 2:1;
+      let evolutionSign = -1;
+      let evolutionCoeff = 1;
+      let stillWorthCoeff = 1;
+      
+      switch (drugName) {
+          case 'Herbal Tea':
+              evolutionSign = 1;
+              break;
+
+          case 'Fervex':
+              switch (true) {
+                  case (expirationTime < 0):
+                      stillWorthCoeff = 0;
+                      break;
+                  case (expirationTime < 6):
+                      evolutionValue = 3;
+                      break;
+                  case (expirationTime < 11):
+                      evolutionValue = 2;
+                      break;
+                  default:
+                      break;
               }
-            }
-          } else {
-            this.drugs[i].benefit =
-              this.drugs[i].benefit - this.drugs[i].benefit;
-          }
-        } else {
-          if (this.drugs[i].benefit < 50) {
-            this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          }
+              evolutionSign = 1;
+              break;
+
+          case 'Dafalgan':
+              evolutionCoeff = 2;
+              break;
+
+          default:
+              break;
         }
-      }
+        // calculate benefit evolution
+        this.drugs[i].benefit = (this.drugs[i].benefit + (evolutionValue * evolutionSign * evolutionCoeff)) * stillWorthCoeff;
+
+        // general rules
+        // the benefit of an item is never more than 50
+        if(this.drugs[i].benefit > 50) {
+          this.drugs[i].benefit = 50;
+        }
+        // the benefit of an item is never less than 0
+        if(this.drugs[i].benefit < 0) {
+          this.drugs[i].benefit = 0;
+        }
+        
     }
 
     return this.drugs;

@@ -61,6 +61,18 @@ describe('Drug', () => {
       new Drug(DRUG_NAME.FERVEX, -1, 0)
     );
   });
+
+  it('Dafalgan: should decrease the benefit twice and expiresIn', () => {
+    expect(new Drug(DRUG_NAME.DAFALGAN, 3, 5).update()).toEqual(
+      new Drug(DRUG_NAME.DAFALGAN, 2, 3)
+    );
+  });
+
+  it('Dafalgan expired: should decrease the benefit four times and expiresIn', () => {
+    expect(new Drug(DRUG_NAME.DAFALGAN, 0, 5).update()).toEqual(
+      new Drug(DRUG_NAME.DAFALGAN, -1, 1)
+    );
+  });
 });
 
 describe('Pharmacy', () => {

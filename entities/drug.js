@@ -30,6 +30,8 @@ export class Drug {
           ? 2
           : 0
       );
+    } else if (this.name === DRUG_NAME.DAFALGAN) {
+      this.updateBenefit(this.expiresIn < 0 ? -4 : -2);
     } else {
       this.updateBenefit(this.expiresIn < 0 ? -2 : -1);
     }

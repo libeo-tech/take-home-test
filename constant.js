@@ -3,4 +3,5 @@ export const DRUG_NAME = {
   FERVEX: 'Fervex',
   MAGIC_PILL: 'Magic Pill',
   DOLIPRANE: 'Doliprane',
+  DAFALGAN: 'Dafalgan',
 };

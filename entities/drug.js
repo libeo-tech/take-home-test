@@ -12,32 +12,26 @@ export class Drug {
   }
 
   update() {
-    if ([DRUG_NAME.HERBAL_TEA, DRUG_NAME.FERVEX].includes(this.name)) {
-      this.updateBenefit(1);
-      if (this.name === DRUG_NAME.FERVEX) {
-        if (this.expiresIn < 11) {
-          this.updateBenefit(1);
-        }
-        if (this.expiresIn < 6) {
-          this.updateBenefit(1);
-        }
-      }
-    } else if (this.name !== DRUG_NAME.MAGIC_PILL) {
-      this.updateBenefit(-1);
+    if (this.name === DRUG_NAME.MAGIC_PILL) {
+      return this;
     }
 
-    if (this.name !== DRUG_NAME.MAGIC_PILL) {
-      this.expiresIn = this.expiresIn - 1;
-    }
+    this.expiresIn = this.expiresIn - 1;
 
-    if (this.expiresIn < 0) {
-      if (this.name === DRUG_NAME.HERBAL_TEA) {
-        this.updateBenefit(1);
-      } else if (this.name === DRUG_NAME.FERVEX) {
-        this.updateBenefit(-this.benefit);
-      } else if (this.name !== DRUG_NAME.MAGIC_PILL) {
-        this.updateBenefit(-1);
-      }
+    if (this.name === DRUG_NAME.HERBAL_TEA) {
+      this.updateBenefit(this.expiresIn < 0 ? 2 : 1);
+    } else if (this.name === DRUG_NAME.FERVEX) {
+      this.updateBenefit(
+        this.expiresIn < 0
+          ? -this.benefit
+          : this.expiresIn < 5
+          ? 3
+          : this.expiresIn < 10
+          ? 2
+          : 0
+      );
+    } else {
+      this.updateBenefit(this.expiresIn < 0 ? -2 : -1);
     }
 
     return this;

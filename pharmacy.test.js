@@ -1,4 +1,4 @@
-import { Drug } from './entities';
+import { Drug, Pharmacy } from './entities';
 import { DRUG_NAME } from './constant';
 
 describe('Drug', () => {
@@ -60,5 +60,31 @@ describe('Drug', () => {
     expect(new Drug(DRUG_NAME.FERVEX, 0, 5).update()).toEqual(
       new Drug(DRUG_NAME.FERVEX, -1, 0)
     );
+  });
+});
+
+describe('Pharmacy', () => {
+  it('Case: Dolipran && Fervex expires in 10 days', () => {
+    expect(
+      new Pharmacy([
+        new Drug(DRUG_NAME.DOLIPRANE, 2, 3),
+        new Drug(DRUG_NAME.FERVEX, 9, 5),
+      ]).updateBenefitValue()
+    ).toEqual([
+      new Drug(DRUG_NAME.DOLIPRANE, 1, 2),
+      new Drug(DRUG_NAME.FERVEX, 8, 7),
+    ]);
+  });
+
+  it('Case: Magic Pill && Herbal Tea', () => {
+    expect(
+      new Pharmacy([
+        new Drug(DRUG_NAME.MAGIC_PILL, 0, 3),
+        new Drug(DRUG_NAME.HERBAL_TEA, 1, 3),
+      ]).updateBenefitValue()
+    ).toEqual([
+      new Drug(DRUG_NAME.MAGIC_PILL, 0, 3),
+      new Drug(DRUG_NAME.HERBAL_TEA, 0, 4),
+    ]);
   });
 });

@@ -69,4 +69,11 @@ describe("Pharmacy", () => {
       new Drug(DrugName.FERVEX, -1, 0)
     ]);
   });
+
+  it("should decrease twice as fast the benefit and decrease expiresIn of a Dafalgan", () => {
+    const pharmacy = new Pharmacy([new Drug(DrugName.DAFALGAN, 10, 5)]);
+    expect(pharmacy.updateBenefitValue()).toEqual([
+      new Drug(DrugName.DAFALGAN, 9, 3)
+    ]);
+  });
 });

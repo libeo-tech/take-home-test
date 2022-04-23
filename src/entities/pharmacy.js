@@ -5,6 +5,10 @@ export class Pharmacy {
     this.drugs = drugs;
   }
 
+  /**
+   * Updates every drug benefits and expiracy for one day
+   * @returns {Drug[]} updated drugs
+   */
   updateBenefitValue() {
     this.drugs.forEach(drug => {
       // Update drugs benefits

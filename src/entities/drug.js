@@ -8,6 +8,10 @@ export class Drug {
     this.benefit = benefit;
   }
 
+  /**
+   * Updates the benefit of a drug relatively to its current value
+   * @param {number} delta value to increase/decrease
+   */
   updateBenefit(delta) {
     this.benefit += delta;
     if (this.benefit < 0) {

@@ -1,5 +1,6 @@
-import { Drug, Pharmacy } from "./pharmacy";
 import fs from "fs";
+import { Drug } from "./entities/drug";
+import { Pharmacy } from "./entities/pharmacy";
 
 const drugs = [
   new Drug("Doliprane", 20, 30),

@@ -1,14 +1,4 @@
-export class Drug {
-  name: string;
-  expiresIn: number;
-  benefit: number;
-
-  constructor(name: string, expiresIn: number, benefit: number) {
-    this.name = name;
-    this.expiresIn = expiresIn;
-    this.benefit = benefit;
-  }
-}
+import { Drug } from "./drug";
 
 export class Pharmacy {
   drugs: Drug[];
@@ -17,7 +7,7 @@ export class Pharmacy {
     this.drugs = drugs;
   }
   
-  updateBenefitValue() {
+  updateBenefitValue(): Drug[] {
     for (var i = 0; i < this.drugs.length; i++) {
       if (
         this.drugs[i].name != "Herbal Tea" &&

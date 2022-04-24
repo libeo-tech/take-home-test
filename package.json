@@ -9,6 +9,7 @@
     "yarn": ">=1.7.0",
     "node": "=16.x"
   },
+  "type":"module",
   "scripts": {
     "lint": "eslint .",
     "test": "jest",

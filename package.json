@@ -12,6 +12,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
+    "test:watch": "jest --watch",
     "start": "ts-node index.ts",
     "watch": "tsc -w"
   },

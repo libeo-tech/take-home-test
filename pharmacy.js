@@ -10,55 +10,39 @@ export class Pharmacy {
   constructor(drugs = []) {
     this.drugs = drugs;
   }
+
   updateBenefitValue() {
     for (var i = 0; i < this.drugs.length; i++) {
-      if (
-        this.drugs[i].name != "Herbal Tea" &&
-        this.drugs[i].name != "Fervex"
-      ) {
-        if (this.drugs[i].benefit > 0) {
-          if (this.drugs[i].name != "Magic Pill") {
-            this.drugs[i].benefit = this.drugs[i].benefit - 1;
-          }
-        }
-      } else {
-        if (this.drugs[i].benefit < 50) {
-          this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          if (this.drugs[i].name == "Fervex") {
-            if (this.drugs[i].expiresIn < 11) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-            if (this.drugs[i].expiresIn < 6) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-          }
-        }
+      let drug = this.drugs[i] // Get drug at position i
+      if (drug.name == "Magic Pill") continue; // Nothing to do
+
+      switch (drug.name) {
+        case "Herbal Tea":
+          if (drug.expiresIn <= 0) drug.benefit += 2;
+          else drug.benefit++;
+          break;
+
+        case "Fervex":
+          if (drug.expiresIn <= 0) drug.benefit = 0;
+          else if (drug.expiresIn <= 5) drug.benefit += 3;
+          else if (drug.expiresIn <= 10) drug.benefit += 2;
+          break;
+        
+        case "Dafalgan":
+          if (drug.expiresIn <= 0) drug.benefit -= 4;
+          else drug.benefit -= 2;
+          break;
+        
+        default:
+          if (drug.expiresIn <= 0) drug.benefit -= 2;
+          else drug.benefit--;
       }
-      if (this.drugs[i].name != "Magic Pill") {
-        this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
-      }
-      if (this.drugs[i].expiresIn < 0) {
-        if (this.drugs[i].name != "Herbal Tea") {
-          if (this.drugs[i].name != "Fervex") {
-            if (this.drugs[i].benefit > 0) {
-              if (this.drugs[i].name != "Magic Pill") {
-                this.drugs[i].benefit = this.drugs[i].benefit - 1;
-              }
-            }
-          } else {
-            this.drugs[i].benefit =
-              this.drugs[i].benefit - this.drugs[i].benefit;
-          }
-        } else {
-          if (this.drugs[i].benefit < 50) {
-            this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          }
-        }
-      }
+
+      // Checking boundaries
+      if (drug.benefit < 0) drug.benefit = 0;
+      if (drug.benefit > 50) drug.benefit = 50;
+
+      drug.expiresIn--; // Decrement expiration date
     }
 
     return this.drugs;

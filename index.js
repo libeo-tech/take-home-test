@@ -9,12 +9,10 @@ const drugs = [
 ];
 const trial = new Pharmacy(drugs);
 
-const log = { logs: [] };
+const log = [];
 
 for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
-  log.logs.push({
-    [`day-${elapsedDays}`]: JSON.stringify(trial.updateBenefitValue()),
-  });
+  log.push(JSON.stringify(trial.updateBenefitValue()));
 }
 
 /* eslint-disable no-console */

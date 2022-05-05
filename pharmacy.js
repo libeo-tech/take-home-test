@@ -10,6 +10,11 @@ export class Drug {
 }
 
 export class Pharmacy {
+  static MAGIC_PILL = "Magic Pill";
+  static HERBAL_TEA = "Herbal Tea";
+  static FERVEX = "Fervex";
+  static DAFALGAN = "Dafalgan";
+
   constructor(drugs = []) {
     this.drugs = drugs;
   }
@@ -17,15 +22,15 @@ export class Pharmacy {
   updateBenefitValue() {
     for (var i = 0; i < this.drugs.length; i++) {
       let drug = this.drugs[i];
-      if (drug.name === "Magic Pill") continue;
+      if (drug.name === Pharmacy.MAGIC_PILL) continue;
       switch (drug.name) {
-        case "Herbal Tea":
+        case Pharmacy.HERBAL_TEA:
           drug = this.handleHerbalTea(drug);
           break;
-        case "Fervex":
+        case Pharmacy.FERVEX:
           drug = this.handleFervex(drug);
           break;
-        case "Dafalgan":
+        case Pharmacy.DAFALGAN:
           drug = this.handleDafalgan(drug);
           break;
         default:

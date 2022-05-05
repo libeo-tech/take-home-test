@@ -25,6 +25,9 @@ export class Pharmacy {
         case "Fervex":
           drug = this.handleFervex(drug);
           break;
+        case "Dafalgan":
+          drug = this.handleDafalgan(drug);
+          break;
         default:
           drug = this.handleDefaultStrategyDrug(drug);
           break;
@@ -59,6 +62,15 @@ export class Pharmacy {
       drug.benefit += 2;
     } else {
       drug.benefit++;
+    }
+    return drug;
+  }
+
+  handleDafalgan(drug) {
+    if (drug.expiresIn <= 0) {
+      drug.benefit -= 4;
+    } else {
+      drug.benefit -= 2;
     }
     return drug;
   }

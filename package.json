@@ -12,7 +12,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "start": "babel-node index.js"
+    "start": "npx ts-node ./src/index.ts"
   },
   "dependencies": {
     "ts-node": "^10.7.0",
@@ -23,6 +23,7 @@
     "@babel/core": "^7.1.0",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
+    "@types/jest": "^27.5.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^27.5.1",
@@ -31,8 +32,7 @@
     "eslint-plugin-prettier": "^2.6.2",
     "jest": "24.8.0",
     "prettier": "^1.14.3",
-    "@types/jest": "^27.5.1",
-    "ts-jest": "^26",
-    "regenerator-runtime": "^0.12.1"
+    "regenerator-runtime": "^0.12.1",
+    "ts-jest": "^26"
   }
 }

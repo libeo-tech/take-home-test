@@ -75,3 +75,14 @@ describe('Pharmacy with Fervex', () => {
     expect(drugStore.updateBenefitValue()).toEqual([new Drug('Fervex', -2, 0)]);
   });
 });
+
+describe('Pharmacy with Dafalgan', () => {
+  it('should decrease the benefit and expiresIn twice as generic Drug', () => {
+    const drugStore = new Pharmacy([new Drug('Dafalgan', 2, 42)]);
+    expect(drugStore.updateBenefitValue()).toEqual([new Drug('Dafalgan', 1, 40)]);
+    expect(drugStore.updateBenefitValue()).toEqual([new Drug('Dafalgan', 0, 38)]);
+    expect(drugStore.updateBenefitValue()).toEqual([new Drug('Dafalgan', -1, 34)]);
+    expect(drugStore.updateBenefitValue()).toEqual([new Drug('Dafalgan', -2, 30)]);
+    expect(drugStore.updateBenefitValue()).toEqual([new Drug('Dafalgan', -3, 26)]);
+  });
+});

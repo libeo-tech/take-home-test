@@ -68,3 +68,11 @@ export class MagicPill extends Drug {
    */
   updateOwnBenefitValue() {}
 }
+
+export class Dafalgan extends Drug {
+  updateOwnBenefitValue() {
+    const benefitVariation = this.hasExpired() ? -4 : -2;
+    this.updateBenefit(benefitVariation);
+    this.expiresIn--;
+  }
+}

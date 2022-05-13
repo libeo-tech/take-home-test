@@ -1,4 +1,4 @@
-import { Drug, Fervex, HerbalTea, MagicPill } from './drug';
+import { Drug, Fervex, HerbalTea, MagicPill, Dafalgan } from './drug';
 
 export class Pharmacy {
   drugs: Drug[];
@@ -20,6 +20,12 @@ export class Pharmacy {
         case 'Magic Pill':
           this.drugs.push(
             new MagicPill(drug.name, drug.expiresIn, drug.benefit)
+          );
+          break;
+
+        case 'Dafalgan':
+          this.drugs.push(
+            new Dafalgan(drug.name, drug.expiresIn, drug.benefit)
           );
           break;
 

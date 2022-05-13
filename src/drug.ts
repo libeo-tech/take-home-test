@@ -1,3 +1,10 @@
+/**
+ * This base class Drug has the basic behavior:
+ *  - At the end of each day our system lowers both values for every drug
+ *  - The Benefit of an item is never negative.
+ *  - Once the expiration date has passed, Benefit degrades twice as fast.
+ */
+
 export class Drug {
   name: string;
   expiresIn: number;
@@ -23,6 +30,10 @@ export class Drug {
     this.expiresIn--;
   }
 }
+
+/**
+ * Derived class allow for specific behavior regarding benefits and expiration.
+ */
 
 export class HerbalTea extends Drug {
   updateOwnBenefitValue() {

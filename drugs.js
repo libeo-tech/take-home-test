@@ -3,15 +3,16 @@ export class Drug {
     this.name = name;
     this.expiresIn = expiresIn;
     this.benefit = benefit;
-    this.benefitUpdateValue = -1;
+    this.benefitUpdateValue = -1; //impact of one day on the drug's benefits
     this.benefitMinValue = 0;
     this.benefitMaxValue = 50;
   }
 
   updateDrugValues() {
-    // update benefit normaly and expiring date if it hasn't reached 0 yet
+    // update benefit normaly
     if (this.expiresIn > 0) this.benefit += this.benefitUpdateValue;
-    else this.benefit += this.benefitUpdateValue * 2; // update the benefits twice as fast after the expiring date is passed
+    // update the benefits twice as fast after the expiring date is passed
+    else this.benefit += this.benefitUpdateValue * 2;
     this.expiresIn--;
     this.correctBenefits();
     return this;
@@ -32,7 +33,7 @@ export class Drug {
 export class HerbalTea extends Drug {
   constructor(name, expiresIn, benefit) {
     super(name, expiresIn, benefit);
-    this.benefitUpdateValue = 1;
+    this.benefitUpdateValue = 1; //benefit is positive over time
   }
 }
 

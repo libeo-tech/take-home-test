@@ -1,4 +1,4 @@
-import { Drug, HerbalTea, MagicPill } from "./drugs";
+import { Drug, HerbalTea, MagicPill, Fervex } from "./drugs";
 
 describe("Drugs", () => {
   it("should decrease the benefit and expiresIn by one each", () => {
@@ -60,6 +60,49 @@ describe("MagicPill", () => {
   it("should let the benefit and expiresIn the same", () => {
     expect(new MagicPill("test", 2, 3).updateDrugValues()).toEqual(
       new MagicPill("test", 2, 3)
+    );
+  });
+});
+
+describe("Fervex", () => {
+  it("should decrease the benefit and increase expiresIn by one each", () => {
+    expect(new Fervex("test", 12, 3).updateDrugValues()).toEqual(
+      new Fervex("test", 11, 4)
+    );
+  });
+  it("should set the benefit to 0", () => {
+    expect(new Fervex("test", 0, 3).updateDrugValues()).toEqual(
+      new Fervex("test", 0, 0)
+    );
+  });
+  it("should decrease expiresIn by 1 and increase the benefit by 2", () => {
+    expect(new Fervex("test", 9, 48).updateDrugValues()).toEqual(
+      new Fervex("test", 8, 50)
+    );
+  });
+  it("should decrease expiresIn by 1 and increase the benefit by 1", () => {
+    expect(new Fervex("test", 9, 49).updateDrugValues()).toEqual(
+      new Fervex("test", 8, 50)
+    );
+  });
+  it("should decrease expiresIn by 1 and increase the benefit by 3", () => {
+    expect(new Fervex("test", 5, 30).updateDrugValues()).toEqual(
+      new Fervex("test", 4, 33)
+    );
+  });
+  it("should decrease expiresIn by 1 and increase the benefit by 2", () => {
+    expect(new Fervex("test", 5, 48).updateDrugValues()).toEqual(
+      new Fervex("test", 4, 50)
+    );
+  });
+  it("should decrease expiresIn by 1 and increase the benefit by 1", () => {
+    expect(new Fervex("test", 5, 49).updateDrugValues()).toEqual(
+      new Fervex("test", 4, 50)
+    );
+  });
+  it("should not change the values of the benifit and expiresIn", () => {
+    expect(new Fervex("test", 0, 0).updateDrugValues()).toEqual(
+      new Fervex("test", 0, 0)
     );
   });
 });

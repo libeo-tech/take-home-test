@@ -12,9 +12,9 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "jest",
+    "test": "yarn build && jest",
     "start": "ts-node src/index.ts",
-    "build": "npx tsc"
+    "build": "rm -rf dist/* && npx tsc"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",

@@ -5,6 +5,7 @@
   "author": "inato",
   "license": "MIT",
   "private": true,
+  "main": "dist/index.js",
   "engines": {
     "yarn": ">=1.7.0",
     "node": "=16.x"
@@ -12,7 +13,8 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "start": "babel-node index.js"
+    "start": "ts-node src/index.ts",
+    "build": "npx tsc"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -27,6 +29,8 @@
     "eslint-plugin-prettier": "^2.6.2",
     "jest": "24.8.0",
     "prettier": "^1.14.3",
-    "regenerator-runtime": "^0.12.1"
+    "regenerator-runtime": "^0.12.1",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   }
 }

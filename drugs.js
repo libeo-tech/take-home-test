@@ -10,12 +10,9 @@ export class Drug {
 
   updateDrugValues() {
     // update benefit normaly and expiring date if it hasn't reached 0 yet
-    if (this.expiresIn >= 1) {
-      this.expiresIn--;
-      this.benefit += this.benefitUpdateValue;
-    } else {
-      this.benefit += this.benefitUpdateValue * 2; // update the benefits twice as fast after the expiring date is passed
-    }
+    if (this.expiresIn > 0) this.benefit += this.benefitUpdateValue;
+    else this.benefit += this.benefitUpdateValue * 2; // update the benefits twice as fast after the expiring date is passed
+    this.expiresIn--;
     this.correctBenefits();
     return this;
   }
@@ -48,13 +45,11 @@ export class MagicPill extends Drug {
 
 export class Fervex extends Drug {
   updateDrugValues() {
-    if (this.expiresIn === 0) this.benefit = 0;
-    else {
-      if (this.expiresIn <= 5) this.benefit += 3;
-      if (this.expiresIn > 5 && this.expiresIn <= 10) this.benefit += 2;
-      if (this.expiresIn > 10) this.benefit++;
-      this.expiresIn--;
-    }
+    if (this.expiresIn <= 0) this.benefit = 0;
+    if (this.expiresIn <= 5 && this.expiresIn > 0) this.benefit += 3;
+    if (this.expiresIn > 5 && this.expiresIn <= 10) this.benefit += 2;
+    if (this.expiresIn > 10) this.benefit++;
+    this.expiresIn--;
     this.correctBenefits();
     return this;
   }

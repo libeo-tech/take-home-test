@@ -22,8 +22,8 @@ export class Pharmacy {
 
   updateBenefitValue(): Drug[] {
     return this.drugs.map(drug => {
-      drug.decreaseExpiration();
       drug.computeNextBenefit();
+      drug.decreaseExpiration();
       return drug;
     });
   }

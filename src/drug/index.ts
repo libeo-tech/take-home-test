@@ -25,13 +25,7 @@ export class Drug {
     else if (this.benefit < 0) this.benefit = 0;
   }
 
-  hasBenefitLimitBeenReached(): boolean {
-    return !(this.benefit > 0 && this.benefit < 50);
-  }
-
   computeNextBenefit(): void {
-    if (this.hasBenefitLimitBeenReached()) return;
-
     switch (this.name) {
       case MAGIC_PILL:
         break;
@@ -44,6 +38,7 @@ export class Drug {
         break;
 
       case FERVEX:
+        if (this.benefit === 0) return;
         if (this.expiresIn < 1) this.benefit = 0;
         else if (this.expiresIn < 6)
           this.benefit += DEFAULT_BENEFIT_DECREASE * 3;

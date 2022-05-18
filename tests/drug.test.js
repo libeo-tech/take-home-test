@@ -18,14 +18,6 @@ describe("Drug", () => {
     expect(molly.benefit).toEqual(0);
   });
 
-  it("should return true for Asprine && false for Molly ", () => {
-    const asprine = new Drug("Asprine", 10, 0);
-    expect(asprine.hasBenefitLimitBeenReached()).toEqual(true);
-
-    const molly = new Drug("Molly", 10, 43);
-    expect(molly.hasBenefitLimitBeenReached()).toEqual(false);
-  });
-
   it("should compute next benefit", () => {
     const asprine = new Drug("Asprine", 10, 22);
     asprine.computeNextBenefit();

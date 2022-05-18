@@ -59,3 +59,10 @@ export class Fervex extends Drug {
     return this;
   }
 }
+
+export class Dafalgan extends Drug {
+  constructor(name, expiresIn, benefit) {
+    super(name, expiresIn, benefit);
+    this.benefitUpdateValue = -2;
+  }
+}

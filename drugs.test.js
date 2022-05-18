@@ -1,4 +1,4 @@
-import { Drug, HerbalTea, MagicPill, Fervex } from "./drugs";
+import { Drug, HerbalTea, MagicPill, Fervex, Dafalgan } from "./drugs";
 
 describe("Drugs", () => {
   it("should decrease the benefit and expiresIn by one each", () => {
@@ -103,6 +103,44 @@ describe("Fervex", () => {
   it("should not change the values of the benifit and expiresIn", () => {
     expect(new Fervex("test", 0, 0).updateDrugValues()).toEqual(
       new Fervex("test", 0, 0)
+    );
+  });
+});
+
+describe("Dafalgan", () => {
+  it("should decrease the benefit by one and expiresIn by 2", () => {
+    expect(new Dafalgan("test", 2, 3).updateDrugValues()).toEqual(
+      new Dafalgan("test", 1, 1)
+    );
+  });
+  it("should only decrease the benefit by 4", () => {
+    expect(new Dafalgan("test", 0, 5).updateDrugValues()).toEqual(
+      new Dafalgan("test", 0, 1)
+    );
+  });
+  it("should only decrease the benefit by 1", () => {
+    expect(new Dafalgan("test", 0, 1).updateDrugValues()).toEqual(
+      new Dafalgan("test", 0, 0)
+    );
+  });
+  it("should only decrease the benefit by 3", () => {
+    expect(new Dafalgan("test", 0, 3).updateDrugValues()).toEqual(
+      new Dafalgan("test", 0, 0)
+    );
+  });
+  it("should only decrease the benefit by 2", () => {
+    expect(new Dafalgan("test", 0, 2).updateDrugValues()).toEqual(
+      new Dafalgan("test", 0, 0)
+    );
+  });
+  it("should only decrease the expiresIn by 1", () => {
+    expect(new Dafalgan("test", 1, 0).updateDrugValues()).toEqual(
+      new Dafalgan("test", 0, 0)
+    );
+  });
+  it("should not change the values of the benifit and expiresIn", () => {
+    expect(new Dafalgan("test", 0, 0).updateDrugValues()).toEqual(
+      new Dafalgan("test", 0, 0)
     );
   });
 });

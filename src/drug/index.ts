@@ -11,7 +11,6 @@ export class Drug {
   benefit: number;
 
   constructor(name: string, expiresIn: number, benefit: number) {
-    //TODO validation check
     this.name = name;
     this.expiresIn = expiresIn;
     this.benefit = benefit;
@@ -37,7 +36,6 @@ export class Drug {
       case MAGIC_PILL:
         break;
       case HERBAL_TEA:
-        console.log('herbal bro')
         this.benefit += degradeBenefit(this.expiresIn);
         break;
 

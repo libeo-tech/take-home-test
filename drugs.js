@@ -35,3 +35,9 @@ export class HerbalTea extends Drug {
     this.benefitUpdateValue = 1;
   }
 }
+
+export class MagicPill extends Drug {
+  updateDrugValues() {
+    return this;
+  }
+}

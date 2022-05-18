@@ -1,4 +1,4 @@
-import { Drug, HerbalTea } from "./drugs";
+import { Drug, HerbalTea, MagicPill } from "./drugs";
 
 describe("Drugs", () => {
   it("should decrease the benefit and expiresIn by one each", () => {
@@ -52,6 +52,14 @@ describe("HerbalTea", () => {
   it("should not change the values of the benifit and expiresIn", () => {
     expect(new HerbalTea("test", 0, 50).updateDrugValues()).toEqual(
       new HerbalTea("test", 0, 50)
+    );
+  });
+});
+
+describe("MagicPill", () => {
+  it("should let the benefit and expiresIn the same", () => {
+    expect(new MagicPill("test", 2, 3).updateDrugValues()).toEqual(
+      new MagicPill("test", 2, 3)
     );
   });
 });

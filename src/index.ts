@@ -1,7 +1,8 @@
-import { Drug, Pharmacy } from "./pharmacy";
+import { Pharmacy } from "./pharmacy";
+import { Drug } from "./drug";
 import fs from "fs";
 
-const drugs = [
+const drugs: Drug[] = [
   new Drug("Doliprane", 20, 30),
   new Drug("Herbal Tea", 10, 5),
   new Drug("Fervex", 5, 40),

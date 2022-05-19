@@ -16,6 +16,12 @@ export class Drug {
     this.benefit = benefit;
   }
 
+  degradeBenefit() {
+    return this.expiresIn > 0
+      ? DEFAULT_BENEFIT_DECREASE
+      : DEFAULT_BENEFIT_DECREASE * 2;
+  }
+
   decreaseExpiration() {
     if (this.name !== MAGIC_PILL) this.expiresIn--;
   }
@@ -30,11 +36,11 @@ export class Drug {
       case MAGIC_PILL:
         break;
       case HERBAL_TEA:
-        this.benefit += degradeBenefit(this.expiresIn);
+        this.benefit += this.degradeBenefit();
         break;
 
       case DAFALGAN:
-        this.benefit -= 2 * degradeBenefit(this.expiresIn);
+        this.benefit -= 2 * this.degradeBenefit();
         break;
 
       case FERVEX:
@@ -49,13 +55,10 @@ export class Drug {
         break;
 
       default:
-        this.benefit -= degradeBenefit(this.expiresIn);
+        this.benefit -= this.degradeBenefit();
         break;
     }
 
     this.applyBenefitConstraints();
   }
 }
-
-const degradeBenefit = (expiresIn: number): number =>
-  expiresIn > 0 ? DEFAULT_BENEFIT_DECREASE : DEFAULT_BENEFIT_DECREASE * 2;

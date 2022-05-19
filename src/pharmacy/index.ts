@@ -14,10 +14,9 @@ const validator = (body: Object, rules: Validator.Rules) => {
 export class Pharmacy {
   drugs: Drug[];
   constructor(drugs: Drug[]) {
-    const validDrugs = drugs.filter(({ name, expiresIn, benefit }) =>
+    this.drugs = drugs.filter(({ name, expiresIn, benefit }) =>
       validator({ name, expiresIn, benefit }, DRUG_VALIDATION_RULE)
     );
-    this.drugs = validDrugs;
   }
 
   updateBenefitValue(): Drug[] {

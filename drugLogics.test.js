@@ -5,7 +5,8 @@ import {
   magicPillLogic,
   herbalTeaLogic,
   fervexLogic,
-  drugLogic
+  drugLogic,
+  decreaseExpiresIn
 } from "./drugLogics";
 
 describe("Usual methods", () => {
@@ -33,11 +34,19 @@ describe("Usual methods", () => {
     expect(decreaseBenefit(10, 100)).toEqual(0);
   });
 
+  it("should decrease by one", () => {
+    expect(decreaseExpiresIn(10, 1)).toEqual(9);
+  });
+});
+
+describe("Logic methods - Magic Pill", () => {
   it("should not change benefit", () => {
     expect(magicPillLogic(10, 20)).toEqual([10, 20]);
   });
+});
 
-  it("should increase benefit by one ", () => {
+describe("Logic methods - Herbal Tea", () => {
+  it("should increase benefit by one", () => {
     expect(herbalTeaLogic(10, 20)).toEqual([9, 21]);
   });
 
@@ -48,7 +57,9 @@ describe("Usual methods", () => {
   it("should not increase benefit more than fifty ", () => {
     expect(herbalTeaLogic(-1, 49)).toEqual([-2, 50]);
   });
+});
 
+describe("Logic methods - Fervex Pill", () => {
   it("should decrease benefit by one", () => {
     expect(fervexLogic(15, 10)).toEqual([14, 9]);
   });
@@ -64,7 +75,9 @@ describe("Usual methods", () => {
   it("should decrease benefit to zero", () => {
     expect(fervexLogic(0, 10)).toEqual([-1, 0]);
   });
+});
 
+describe("Logic methods - Drug", () => {
   it("should decrease benefit by one", () => {
     expect(drugLogic(5, 10)).toEqual([4, 9]);
   });

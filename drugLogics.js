@@ -70,6 +70,15 @@ function fervexLogic(expiresIn, benefit) {
   return [decreaseExpiresIn(expiresIn, 1), benefit];
 }
 
+function dafalganLogic(expiresIn, benefit) {
+  if (isExpired(expiresIn)) {
+    benefit = decreaseBenefit(benefit, 4);
+  } else {
+    benefit = decreaseBenefit(benefit, 2);
+  }
+  return [decreaseExpiresIn(expiresIn, 1), benefit];
+}
+
 function drugLogic(expiresIn, benefit) {
   if (isExpired(expiresIn)) {
     benefit = decreaseBenefit(benefit, 2);
@@ -83,8 +92,10 @@ export {
   herbalTeaLogic,
   magicPillLogic,
   fervexLogic,
+  dafalganLogic,
   drugLogic,
   increaseBenefit,
   decreaseBenefit,
+  decreaseExpiresIn,
   isExpired
 };

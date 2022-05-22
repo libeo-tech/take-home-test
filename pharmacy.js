@@ -1,4 +1,4 @@
-import { herbalTeaLogic, magicPillLogic, fervexLogic, drugLogic } from "./drugLogics";
+import { herbalTeaLogic, magicPillLogic, fervexLogic, dafalganLogic, drugLogic } from "./drugLogics";
 
 export class Drug {
   constructor(name, expiresIn, benefit) {
@@ -24,6 +24,9 @@ export class Pharmacy {
           break;
         case "Fervex":
           resultLogic = fervexLogic(this.drugs[i].expiresIn, this.drugs[i].benefit);
+          break;
+        case "Dafalgan":
+          resultLogic = dafalganLogic(this.drugs[i].expiresIn, this.drugs[i].benefit);
           break;
         default:
           resultLogic = drugLogic(this.drugs[i].expiresIn, this.drugs[i].benefit);

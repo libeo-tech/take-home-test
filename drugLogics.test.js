@@ -6,6 +6,7 @@ import {
   herbalTeaLogic,
   fervexLogic,
   drugLogic,
+  dafalganLogic,
   decreaseExpiresIn
 } from "./drugLogics";
 
@@ -84,5 +85,15 @@ describe("Logic methods - Drug", () => {
 
   it("should decrease benefit by two", () => {
     expect(drugLogic(0, 10)).toEqual([-1, 8]);
+  });
+});
+
+describe("Logic methods - Dafalgan", () => {
+  it("should decrease benefit by two", () => {
+    expect(dafalganLogic(10, 10)).toEqual([9, 8]);
+  });
+
+  it("should decrease benefit by four", () => {
+    expect(dafalganLogic(0, 10)).toEqual([-1, 6]);
   });
 });

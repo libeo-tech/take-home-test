@@ -1,20 +1,11 @@
 import { Pharmacy } from "./models/pharmacy";
 import * as fs from "fs";
-import { Drug } from "./models/drug";
+import { getDrugs } from "./data/db";
 
-const drugs = [
-  new Drug("Doliprane", 20, 30),
-  new Drug("Herbal Tea", 10, 5),
-  new Drug("Fervex", 5, 40),
-  new Drug("Magic Pill", 15, 40)
-];
+const drugs = getDrugs();
 const trial = new Pharmacy(drugs);
 
-const log = [];
-
-for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
-  log.push(JSON.stringify(trial.updateBenefitValue()));
-}
+const log = trial.startSimulation(30);
 
 /* eslint-disable no-console */
 fs.writeFile("output.txt", log.toString(), err => {

@@ -7,6 +7,14 @@ export class Pharmacy {
     this.drugs = drugs;
   }
 
+  startSimulation(maxElapsedDays: number = 30): string[] {
+    const log = [];
+    for (let elapsedDays = 0; elapsedDays < maxElapsedDays; elapsedDays++) {
+      log.push(JSON.stringify(this.updateBenefitValue()));
+    }
+    return log;
+  }
+
   updateBenefitValue() {
     for (var i = 0; i < this.drugs.length; i++) {
       if (

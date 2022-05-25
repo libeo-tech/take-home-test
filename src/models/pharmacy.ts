@@ -3,7 +3,7 @@ import { Drug } from "./drug";
 export class Pharmacy {
   drugs: Drug[];
 
-  constructor(drugs = []) {
+  constructor(drugs: Drug[] = []) {
     this.drugs = drugs;
   }
 

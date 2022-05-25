@@ -5,6 +5,7 @@ interface DrugConfig {
   };
 }
 
+const MAX_BENEFIT = 50;
 export class Drug {
   name: string;
   expiresIn: number;
@@ -57,7 +58,7 @@ export class Drug {
   updateBenefit(): void {
     this.benefit = Math.min(
       Math.max(this.benefit - this.getDrugConfig().benefitDecrease, 0),
-      50
+      MAX_BENEFIT
     );
   }
 

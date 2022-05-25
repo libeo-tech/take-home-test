@@ -1,7 +1,5 @@
 import { Drug } from "./drug";
 export class Pharmacy {
-  MAX_BENEFIT = 50;
-
   drugs: Drug[];
 
   constructor(drugs: Drug[] = []) {

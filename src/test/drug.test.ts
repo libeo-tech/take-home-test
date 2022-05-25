@@ -54,6 +54,12 @@ describe("Drug", () => {
       testDrug.updateBenefit();
       expect(testDrug).toEqual(new Drug("Fervex", -4, 0));
     });
+
+    it("should decrease by 2", () => {
+      const testDrug = new Drug("Dafalgan", 10, 10);
+      testDrug.updateBenefit();
+      expect(testDrug).toEqual(new Drug("Dafalgan", 10, 8));
+    });
   });
 
   describe("updateExpirationDate", () => {

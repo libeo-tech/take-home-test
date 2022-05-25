@@ -1,5 +1,6 @@
-import { Drug, Pharmacy } from "./pharmacy";
+import { Pharmacy } from "./models/pharmacy";
 import * as fs from "fs";
+import { Drug } from "./models/drug";
 
 const drugs = [
   new Drug("Doliprane", 20, 30),

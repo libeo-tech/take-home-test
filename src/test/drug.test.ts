@@ -25,6 +25,12 @@ describe("Drug", () => {
       expect(testDrug).toEqual(new Drug("Herbal Tea", 5, 50));
     });
 
+    it("should increase by 2", () => {
+      const testDrug = new Drug("Herbal Tea", -1, 3);
+      testDrug.updateBenefit();
+      expect(testDrug).toEqual(new Drug("Herbal Tea", -1, 5));
+    });
+
     it("shouldn't change", () => {
       const testDrug = new Drug("Magic Pill", 5, 5);
       testDrug.updateBenefit();

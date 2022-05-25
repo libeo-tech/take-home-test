@@ -19,8 +19,8 @@ describe("Pharmacy", () => {
         flag: "r"
       });
 
-      expect(goal).toEqual(
-        new Pharmacy(getDrugs()).startSimulation(30).toString()
+      expect(new Pharmacy(getDrugs()).startSimulation(30).toString()).toEqual(
+        goal
       );
     });
   });

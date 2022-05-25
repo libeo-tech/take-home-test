@@ -60,6 +60,12 @@ describe("Drug", () => {
       testDrug.updateBenefit();
       expect(testDrug).toEqual(new Drug("Dafalgan", 10, 8));
     });
+
+    it("shouldn't go below 0", () => {
+      const testDrug = new Drug("Dafalgan", 10, 1);
+      testDrug.updateBenefit();
+      expect(testDrug).toEqual(new Drug("Dafalgan", 10, 0));
+    });
   });
 
   describe("updateExpirationDate", () => {

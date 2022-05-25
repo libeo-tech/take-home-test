@@ -33,6 +33,10 @@ export class Drug {
         benefitDecrease: 0,
         expiresInDecrease: 0
       },
+      Dafalgan: {
+        benefitDecrease: 2,
+        expiresInDecrease: 1
+      },
       Fervex: {
         benefitDecrease: -this.getFervexBenefitIncrease(),
         expiresInDecrease: 1

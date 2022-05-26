@@ -1,4 +1,4 @@
-import Pharmacy from '../src/pharmacy';
+import Pharmacy from '../src/Pharmacy';
 import Drug from '../src/Model/Drug';
 
 describe('Pharmacy', () => {
@@ -8,5 +8,3 @@ describe('Pharmacy', () => {
     );
   });
 });
-
-

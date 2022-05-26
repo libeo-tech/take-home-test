@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import Pharmacy from './src/pharmacy';
+import Pharmacy from 'src/Pharmacy';
 import Drug from './src/Model/Drug';
 
 const drugs:Drug[] = [

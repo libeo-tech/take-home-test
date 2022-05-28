@@ -66,8 +66,8 @@ describe("Pharmacy", () => {
     ).toEqual([new Drug(fervex, 9, 4)]);
   });
 
-it("Fervex should increase by 3 in benefit when 5 days or less", () => {
-  expect(new Pharmacy([new Drug(fervex, 5, 2)]).updateBenefitValue()).toEqual(
+  it("Fervex should increase by 3 in benefit when 5 days or less", () => {
+    expect(new Pharmacy([new Drug(fervex, 5, 2)]).updateBenefitValue()).toEqual(
       [new Drug(fervex, 4, 5)]
     );
   });

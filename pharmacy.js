@@ -1,11 +1,3 @@
-export class Drug {
-  constructor(name, expiresIn, benefit) {
-    this.name = name;
-    this.expiresIn = expiresIn;
-    this.benefit = benefit;
-  }
-}
-
 export const herbalTea = "Herbal Tea";
 export const fervex = "Fervex";
 export const magicPill = "Magic Pill";

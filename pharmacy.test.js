@@ -1,17 +1,11 @@
-import {
-  dafalgan,
-  Drug,
-  fervex,
-  herbalTea,
-  magicPill,
-  Pharmacy
-} from "./pharmacy";
+import { dafalgan, fervex, herbalTea, magicPill, Pharmacy } from "./pharmacy";
+import { Drug } from "./drug";
 
 describe("Pharmacy", () => {
   it("should decrease the benefit and expiresIn", () => {
-    expect(
-      new Pharmacy([new Drug("test", 2, 3)]).updateBenefitValue()
-    ).toEqual([new Drug("test", 1, 2)]);
+    expect(new Pharmacy([new Drug("test", 2, 3)]).updateBenefitValue()).toEqual(
+      [new Drug("test", 1, 2)]
+    );
   });
 
   //Once the expiration date has passed, Benefit degrades twice as fast.
@@ -23,9 +17,9 @@ describe("Pharmacy", () => {
 
   //   The Benefit of an item is never negative.
   it("should not have a negative benefit", () => {
-    expect(
-      new Pharmacy([new Drug("test", 2, 0)]).updateBenefitValue()
-    ).toEqual([new Drug("test", 1, 0)]);
+    expect(new Pharmacy([new Drug("test", 2, 0)]).updateBenefitValue()).toEqual(
+      [new Drug("test", 1, 0)]
+    );
   });
 
   //  "Herbal Tea" actually increases in Benefit the older it gets.
@@ -70,15 +64,15 @@ describe("Pharmacy", () => {
   });
 
   it("Fervex should increase by 3 in benefit when 5 days or less", () => {
-    expect(
-      new Pharmacy([new Drug(fervex, 5, 2)]).updateBenefitValue()
-    ).toEqual([new Drug(fervex, 4, 5)]);
+    expect(new Pharmacy([new Drug(fervex, 5, 2)]).updateBenefitValue()).toEqual(
+      [new Drug(fervex, 4, 5)]
+    );
   });
 
   it("Fervex benefit should drop to 0 adter expiration date", () => {
-    expect(
-      new Pharmacy([new Drug(fervex, 0, 8)]).updateBenefitValue()
-    ).toEqual([new Drug(fervex, -1, 0)]);
+    expect(new Pharmacy([new Drug(fervex, 0, 8)]).updateBenefitValue()).toEqual(
+      [new Drug(fervex, -1, 0)]
+    );
   });
 
   // Dafalgan degrades twice as fast as normal drugs

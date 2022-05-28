@@ -22,58 +22,51 @@ export class Pharmacy {
     return this.drugs;
   }
 
-  updateDrug(drug) {
-    if (drug.name == herbalTea) {
-      drug.expiresIn--;
-      if (drug.expiresIn < 0) {
-        drug.benefit += 2;
-      } else {
-        drug.benefit++;
-      }
-      if (drug.benefit > 50) {
-        drug.benefit = 50;
-      }
-      return;
+  checkDrug(drug) {
+    if (drug.benefit > 50) {
+      drug.benefit = 50;
     }
+    if (drug.benefit < 0) {
+      drug.benefit = 0;
+    }
+  }
 
-    if (drug.name != fervex) {
-      if (drug.benefit > 0) {
-        if (drug.name != magicPill) {
-          drug.benefit = drug.benefit - 1;
-        }
-      }
-    } else {
-      if (drug.benefit < 50) {
-        drug.benefit = drug.benefit + 1;
-        if (drug.name == fervex) {
-          if (drug.expiresIn < 11) {
-            if (drug.benefit < 50) {
-              drug.benefit = drug.benefit + 1;
-            }
-          }
-          if (drug.expiresIn < 6) {
-            if (drug.benefit < 50) {
-              drug.benefit = drug.benefit + 1;
-            }
-          }
-        }
-      }
-    }
-    if (drug.name != magicPill) {
-      drug.expiresIn = drug.expiresIn - 1;
-    }
-    if (drug.expiresIn < 0) {
-      if (drug.name != herbalTea) {
-        if (drug.name != fervex) {
-          if (drug.benefit > 0) {
-            if (drug.name != magicPill) {
-              drug.benefit = drug.benefit - 1;
-            }
-          }
+  updateDrug(drug) {
+    switch (drug.name) {
+      case herbalTea:
+        drug.expiresIn--;
+        if (drug.expiresIn < 0) {
+          drug.benefit += 2;
         } else {
-          drug.benefit = drug.benefit - drug.benefit;
+          drug.benefit++;
         }
-      }
+        break;
+
+      case magicPill:
+        break;
+
+      case fervex:
+        drug.expiresIn--;
+        if (drug.expiresIn < 0) {
+          drug.benefit = 0;
+        } else if (drug.expiresIn < 6) {
+          drug.benefit += 3;
+        } else if (drug.expiresIn < 11) {
+          drug.benefit += 2;
+        } else {
+          drug.benefit++;
+        }
+        break;
+
+      default:
+        drug.expiresIn--;
+        if (drug.expiresIn >= 0) {
+          drug.benefit--;
+        } else {
+          drug.benefit -= 2;
+        }
+        break;
     }
+    this.checkDrug(drug);
   }
 }

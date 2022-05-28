@@ -14,7 +14,8 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "test-coverage": "jest --collectCoverage",
-    "start": "babel-node index.js"
+    "start": "babel-node index.js",
+    "nonreg": "babel-node index.js && diff output.txt output-origin.txt"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",

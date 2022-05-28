@@ -15,12 +15,9 @@ export class Pharmacy {
   constructor(drugs = []) {
     this.drugs = drugs;
   }
-  updateBenefitValue() {
-    for (var i = 0; i < this.drugs.length; i++) {
-      this.updateDrug(this.drugs[i]);
-    }
 
-    return this.drugs;
+  updateBenefitValue() {
+    return this.drugs.map((d) => this.updateDrug(d));
   }
 
   checkDrug(drug) {
@@ -47,16 +44,7 @@ export class Pharmacy {
         break;
 
       case fervex:
-        drug.expiresIn--;
-        if (drug.expiresIn < 0) {
-          drug.benefit = 0;
-        } else if (drug.expiresIn < 6) {
-          drug.benefit += 3;
-        } else if (drug.expiresIn < 11) {
-          drug.benefit += 2;
-        } else {
-          drug.benefit++;
-        }
+        this.updateFervex(drug);
         break;
 
       case dafalgan:
@@ -78,5 +66,19 @@ export class Pharmacy {
         break;
     }
     this.checkDrug(drug);
+    return drug;
+  }
+
+  updateFervex(drug) {
+    drug.expiresIn--;
+    if (drug.expiresIn < 0) {
+      drug.benefit = 0;
+    } else if (drug.expiresIn < 6) {
+      drug.benefit += 3;
+    } else if (drug.expiresIn < 11) {
+      drug.benefit += 2;
+    } else {
+      drug.benefit++;
+    }
   }
 }

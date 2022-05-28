@@ -1,4 +1,4 @@
-import { Drug, Pharmacy } from "./pharmacy";
+import { dafalgan, Drug, Pharmacy } from "./pharmacy";
 
 describe("Pharmacy", () => {
   const herbalTeaName = "Herbal Tea";
@@ -76,5 +76,18 @@ describe("Pharmacy", () => {
     expect(new Pharmacy([new Drug(fervex, 0, 8)]).updateBenefitValue()).toEqual(
       [new Drug(fervex, -1, 0)]
     );
+  });
+
+  // Dafalgan degrades twice as fast as normal drugs
+  it("Dafalgan should degrade twice as fast", () => {
+    expect(
+      new Pharmacy([new Drug(dafalgan, 2, 8)]).updateBenefitValue()
+    ).toEqual([new Drug(dafalgan, 1, 6)]);
+  });
+
+  it("Dafalgan should degrade twice as fast after expiration date", () => {
+    expect(
+      new Pharmacy([new Drug(dafalgan, -2, 8)]).updateBenefitValue()
+    ).toEqual([new Drug(dafalgan, -3, 4)]);
   });
 });

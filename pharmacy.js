@@ -6,9 +6,10 @@ export class Drug {
   }
 }
 
-const herbalTea = "Herbal Tea";
-const fervex = "Fervex";
-const magicPill = "Magic Pill";
+export const herbalTea = "Herbal Tea";
+export const fervex = "Fervex";
+export const magicPill = "Magic Pill";
+export const dafalgan = "Dafalgan";
 
 export class Pharmacy {
   constructor(drugs = []) {
@@ -55,6 +56,15 @@ export class Pharmacy {
           drug.benefit += 2;
         } else {
           drug.benefit++;
+        }
+        break;
+
+      case dafalgan:
+        drug.expiresIn--;
+        if (drug.expiresIn >= 0) {
+          drug.benefit -= 2;
+        } else {
+          drug.benefit -= 4;
         }
         break;
 

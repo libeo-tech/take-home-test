@@ -12,6 +12,8 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --collectCoverage",
     "start": "babel-node index.js"
   },
   "devDependencies": {

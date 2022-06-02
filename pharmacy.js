@@ -32,7 +32,7 @@ export class Pharmacy {
   }
 
   updateDafalgan(drug) {
-    drug.benefit += drug.expiresIn > 0 ? 2 : 4;
+    drug.benefit -= drug.expiresIn > 0 ? 2 : 4;
   }
 
   updateBenefitValue() {

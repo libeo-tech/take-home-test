@@ -63,6 +63,15 @@ This section lists the different drugs implemented in the system:
 - [Herbal Tea](#herbal-tea)
 - [Magic Pill](#magic-pill)
 
+## Dafalgan
+
+Dafalgan degrades in Benefit twice as fast as normal drugs.
+
+| Status                  | Expiration coefficient | Benefit coefficient |
+|-------------------------|------------------------|---------------------|
+| $∞ > D > 0$ (standard)  | -1                     | -2                  |
+| $0 ≥ D > -∞$ (expired)  | -1                     | -4                  |
+
 ## Doliprane
 
 Doliprane does not have any specific behaviour and follows [general drug rules](#drugs).

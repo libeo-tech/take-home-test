@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Magic Pill should be serializable to JSON 1`] = `
+Object {
+  "benefit": 5,
+  "expiresIn": 30,
+  "name": "Magic Pill",
+}
+`;
+
+exports[`Magic Pill should be serializable to string 1`] = `"{\\"name\\":\\"Magic Pill\\",\\"expiresIn\\":30,\\"benefit\\":5}"`;
+
+exports[`Magic Pill should not allow for a benefit greater than 50 1`] = `
+Object {
+  "benefit": 50,
+  "expiresIn": 30,
+  "name": "Magic Pill",
+}
+`;
+
+exports[`Magic Pill should not allow for a negative benefit 1`] = `
+Object {
+  "benefit": 0,
+  "expiresIn": 30,
+  "name": "Magic Pill",
+}
+`;
+
+exports[`Magic Pill should not change expiration or benefit with time 1`] = `
+Object {
+  "benefit": 5,
+  "expiresIn": 30,
+  "name": "Magic Pill",
+}
+`;
+
+exports[`Magic Pill should not change expiration or benefit with time 2`] = `
+Object {
+  "benefit": 5,
+  "expiresIn": 0,
+  "name": "Magic Pill",
+}
+`;
+
+exports[`Magic Pill should not change expiration or benefit with time 3`] = `
+Object {
+  "benefit": 5,
+  "expiresIn": 30,
+  "name": "Magic Pill",
+}
+`;

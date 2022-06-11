@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fervex benefit + 2 if 10 >= expiresIn > 5 1`] = `
+Object {
+  "benefit": 7,
+  "expiresIn": 9,
+  "name": "Fervex",
+}
+`;
+
+exports[`Fervex benefit + 2 if 10 >= expiresIn > 5 2`] = `
+Object {
+  "benefit": 9,
+  "expiresIn": 5,
+  "name": "Fervex",
+}
+`;
+
+exports[`Fervex benefit + 3 if 5 >= expiresIn > 0 1`] = `
+Object {
+  "benefit": 8,
+  "expiresIn": 4,
+  "name": "Fervex",
+}
+`;
+
+exports[`Fervex benefit + 3 if 5 >= expiresIn > 0 2`] = `
+Object {
+  "benefit": 11,
+  "expiresIn": 0,
+  "name": "Fervex",
+}
+`;
+
+exports[`Fervex benefit drops to 0 if 0 >= expiresIn > -∞ 1`] = `
+Object {
+  "benefit": 0,
+  "expiresIn": -1,
+  "name": "Fervex",
+}
+`;
+
+exports[`Fervex should be serializable to JSON 1`] = `
+Object {
+  "benefit": 5,
+  "expiresIn": 30,
+  "name": "Fervex",
+}
+`;
+
+exports[`Fervex should be serializable to string 1`] = `"{\\"name\\":\\"Fervex\\",\\"expiresIn\\":30,\\"benefit\\":5}"`;
+
+exports[`Fervex should increase benefit with time 1`] = `
+Object {
+  "benefit": 6,
+  "expiresIn": 29,
+  "name": "Fervex",
+}
+`;
+
+exports[`Fervex should not allow for a benefit greater than 50 1`] = `
+Object {
+  "benefit": 50,
+  "expiresIn": 30,
+  "name": "Fervex",
+}
+`;
+
+exports[`Fervex should not allow for a negative benefit 1`] = `
+Object {
+  "benefit": 0,
+  "expiresIn": 30,
+  "name": "Fervex",
+}
+`;

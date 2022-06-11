@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Doliprane should be serializable to JSON 1`] = `
+Object {
+  "benefit": 5,
+  "expiresIn": 30,
+  "name": "Doliprane",
+}
+`;
+
+exports[`Doliprane should be serializable to string 1`] = `"{\\"name\\":\\"Doliprane\\",\\"expiresIn\\":30,\\"benefit\\":5}"`;
+
+exports[`Doliprane should decrease benefit twice as much if expired 1`] = `
+Object {
+  "benefit": 3,
+  "expiresIn": -1,
+  "name": "Doliprane",
+}
+`;
+
+exports[`Doliprane should decrease expiresIn and benefit over time 1`] = `
+Object {
+  "benefit": 4,
+  "expiresIn": 29,
+  "name": "Doliprane",
+}
+`;
+
+exports[`Doliprane should not allow for a benefit greater than 50 1`] = `
+Object {
+  "benefit": 50,
+  "expiresIn": 30,
+  "name": "Doliprane",
+}
+`;
+
+exports[`Doliprane should not allow for a negative benefit 1`] = `
+Object {
+  "benefit": 0,
+  "expiresIn": 30,
+  "name": "Doliprane",
+}
+`;

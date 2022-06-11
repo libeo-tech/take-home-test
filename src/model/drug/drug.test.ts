@@ -1,11 +1,17 @@
 import { DrugName } from '../../type/DrugName';
 import { Drug } from './drug';
 
+class TestDrug extends Drug {
+  constructor(expiresIn: number, benefit: number) {
+    super(DrugName.TEST, expiresIn, benefit);
+  }
+}
+
 describe('Drug', () => {
   let drug: Drug;
 
   beforeEach(() => {
-    drug = new Drug(DrugName.TEST, 30, 5);
+    drug = new TestDrug(30, 5);
   });
 
   it('should not allow for a negative benefit', () => {

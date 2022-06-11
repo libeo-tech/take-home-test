@@ -13,5 +13,7 @@ export class HerbalTea extends Drug {
       this.benefit += 1;
     }
     this.expiresIn -= 1;
+
+    return this;
   }
 }

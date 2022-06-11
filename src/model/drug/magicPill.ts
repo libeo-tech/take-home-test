@@ -10,6 +10,7 @@ export class MagicPill extends Drug {
     return false;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public updateValues() {}
+  public updateValues() {
+    return this;
+  }
 }

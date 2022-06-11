@@ -17,5 +17,7 @@ export class Fervex extends Drug {
       this.benefit = 0;
     }
     this.expiresIn -= 1;
+
+    return this;
   }
 }

@@ -1,10 +1,11 @@
-import { DrugName, DrugNameType } from '../../type/DrugName';
+import { boundNumber } from '../../tools/boundNumber';
+import { DrugName } from '../../type/DrugName';
 
-export class Drug {
+export abstract class Drug {
   private _internalBenefit: number;
 
-  constructor(
-    public readonly name: DrugName | DrugNameType,
+  protected constructor(
+    public readonly name: DrugName,
     public expiresIn: number,
     benefit: number
   ) {
@@ -20,7 +21,7 @@ export class Drug {
    * @param value
    */
   public set benefit(value: number) {
-    this._internalBenefit = Math.max(0, value);
+    this._internalBenefit = boundNumber(value, 0, 50);
   }
 
   /**
@@ -33,9 +34,11 @@ export class Drug {
   /**
    * Update internal expiration and benefit values according to drug's rules
    */
-  public updateValues() {
+  public updateValues(): this {
     this.benefit -= this.isExpired() ? 2 : 1;
     this.expiresIn -= 1;
+
+    return this;
   }
 
   /**

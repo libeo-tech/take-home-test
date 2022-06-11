@@ -5,5 +5,3 @@ export enum DrugName {
   MAGIC_PILL = 'Magic Pill',
   TEST = 'test',
 }
-
-export type DrugNameType = `${DrugName}`;

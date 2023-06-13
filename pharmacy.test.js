@@ -81,7 +81,7 @@ describe("Pharmacy", () => {
 
   //  "Fervex", like Herbal Tea, increases in Benefit as its expiration date approaches. 
   // Benefit increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Benefit drops to 0 after the expiration date.
-  it("should Magic Pill never expire nor decreases in Benefit", () => {
+  it("should Fervex never expire nor decreases in Benefit", () => {
     expect(new Pharmacy([
       new Drug("Fervex", 11, 10),
       new Drug("Fervex", 10, 10),

@@ -87,7 +87,13 @@ describe("Pharmacy", () => {
     );
   })
 
+<<<<<<< HEAD
   it("should Fervex Benefit increases by 2 when there are 10 days or less", () => {
+=======
+  //  "Fervex", like Herbal Tea, increases in Benefit as its expiration date approaches. 
+  // Benefit increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Benefit drops to 0 after the expiration date.
+  it("should Fervex never expire nor decreases in Benefit", () => {
+>>>>>>> 93b1f7da0c84415f2c603579975270c0cc48e41e
     expect(new Pharmacy([
       new Drug("Fervex", 11, 10),
       new Drug("Fervex", 10, 10),

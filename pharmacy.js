@@ -1,64 +1,116 @@
+const FERVEX = "Fervex";
+const HERBAL_TEA = "Herbal Tea";
+const MAGIC_PILL = "Magic Pill";
+
+const BENEFIT_MAX = 50;
+const BENEFIT_MIN = 0;
+
 export class Drug {
+
   constructor(name, expiresIn, benefit) {
     this.name = name;
     this.expiresIn = expiresIn;
     this.benefit = benefit;
   }
+
+  increaseBenefitBy(gain) {
+    this.benefit = this.benefit + gain;
+    // The Benefit of an item is never more than 50.
+    if (this.benefit > BENEFIT_MAX) {
+      this.benefit = BENEFIT_MAX
+    }
+  }
+
+  decreaseBenefitBy(lost) {
+    this.benefit = this.benefit - lost;
+    // The Benefit of an item is never negative.
+    if (this.benefit < BENEFIT_MIN) {
+      this.benefit = BENEFIT_MIN
+    }
+  }
+
+  decreaseExpiresIn() {
+    this.expiresIn = this.expiresIn - 1;
+  }
+
+  get isExpired() {
+    return this.expiresIn <= 0;
+  }
 }
+
+class DefaultUpdateBenefitStrategy {
+  updateBenefit(drug) {
+    //Once the expiration date has passed, Benefit degrades twice as fast.
+    const lost = drug.isExpired ? 2 : 1;
+    drug.decreaseBenefitBy(lost)
+  }
+
+  updateExpireIn(drug) {
+    drug.decreaseExpiresIn();
+  }
+}
+
+//"Fervex", like Herbal Tea, increases in Benefit as its expiration date approaches.
+// Benefit increases by 2 when there are 10 days or less 
+// and by 3 when there are 5 days or less 
+// but Benefit drops to 0 after the expiration date.
+class FervexUpdateBenefitStrategy extends DefaultUpdateBenefitStrategy {
+  updateBenefit(drug) {
+    if (drug.isExpired) {
+      drug.decreaseBenefitBy(drug.benefit)
+    } else {
+      let gain = 1;
+      if (drug.expiresIn <= 5) {
+        gain = 3
+      } else if (drug.expiresIn <= 10) {
+        gain = 2
+      }
+      drug.increaseBenefitBy(gain)
+    }
+  }
+}
+// "Herbal Tea" actually increases in Benefit the older it gets.Benefit increases twice as fast after the expiration date.
+class HerbalTeaUpdateBenefitStrategy extends DefaultUpdateBenefitStrategy {
+  updateBenefit(drug) {
+    const gain = drug.isExpired ? 2 : 1;
+    drug.increaseBenefitBy(gain)
+  }
+}
+
+// "Magic Pill" never expires nor decreases in Benefit.
+class MagicPillTeaUpdateBenefitStrategy extends DefaultUpdateBenefitStrategy {
+  updateBenefit(drug) {
+    // do nothing
+  }
+
+  updateExpireIn(drug) {
+    // do nothing
+  }
+}
+
+class UpdateBenefitStrategyFactory {
+  getUpdateBenefitStrategy(drug) {
+    switch (drug.name) {
+      case FERVEX: return new FervexUpdateBenefitStrategy();
+      case HERBAL_TEA: return new HerbalTeaUpdateBenefitStrategy();
+      case MAGIC_PILL: return new MagicPillTeaUpdateBenefitStrategy();
+      default: return new DefaultUpdateBenefitStrategy()
+    }
+
+  }
+}
+
 
 export class Pharmacy {
   constructor(drugs = []) {
     this.drugs = drugs;
+    this.strategyFactory = new UpdateBenefitStrategyFactory();
   }
   updateBenefitValue() {
-    for (var i = 0; i < this.drugs.length; i++) {
-      if (
-        this.drugs[i].name != "Herbal Tea" &&
-        this.drugs[i].name != "Fervex"
-      ) {
-        if (this.drugs[i].benefit > 0) {
-          if (this.drugs[i].name != "Magic Pill") {
-            this.drugs[i].benefit = this.drugs[i].benefit - 1;
-          }
-        }
-      } else {
-        if (this.drugs[i].benefit < 50) {
-          this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          if (this.drugs[i].name == "Fervex") {
-            if (this.drugs[i].expiresIn < 11) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-            if (this.drugs[i].expiresIn < 6) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-          }
-        }
-      }
-      if (this.drugs[i].name != "Magic Pill") {
-        this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
-      }
-      if (this.drugs[i].expiresIn < 0) {
-        if (this.drugs[i].name != "Herbal Tea") {
-          if (this.drugs[i].name != "Fervex") {
-            if (this.drugs[i].benefit > 0) {
-              if (this.drugs[i].name != "Magic Pill") {
-                this.drugs[i].benefit = this.drugs[i].benefit - 1;
-              }
-            }
-          } else {
-            this.drugs[i].benefit =
-              this.drugs[i].benefit - this.drugs[i].benefit;
-          }
-        } else {
-          if (this.drugs[i].benefit < 50) {
-            this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          }
-        }
-      }
+    for (let drug of this.drugs) {
+      const strategy = this.strategyFactory.getUpdateBenefitStrategy(drug);
+      strategy.updateBenefit(drug);
+      strategy.updateExpireIn(drug);
     }
 
     return this.drugs;

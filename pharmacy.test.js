@@ -1,6 +1,14 @@
 import { Drug, Pharmacy } from "./pharmacy";
 
 describe("Pharmacy", () => {
+
+  it("should return an e,mpty array when drugs are undefined", () => {
+    expect(new Pharmacy(undefined).updateBenefitValue()).toEqual(
+      []
+    );
+  });
+
+
   it("should decrease the benefit and expiresIn", () => {
     expect(new Pharmacy([new Drug("test", 2, 3)]).updateBenefitValue()).toEqual(
       [new Drug("test", 1, 2)]
@@ -83,11 +91,13 @@ describe("Pharmacy", () => {
     expect(new Pharmacy([
       new Drug("Fervex", 11, 10),
       new Drug("Fervex", 10, 10),
+      new Drug("Fervex", 12, 51),
 
     ]).updateBenefitValue()).toEqual(
       [
         new Drug("Fervex", 10, 11),
         new Drug("Fervex", 9, 12),
+        new Drug("Fervex", 11, 51),
       ]
     );
   })

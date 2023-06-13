@@ -1,6 +1,7 @@
 const FERVEX = "Fervex";
 const HERBAL_TEA = "Herbal Tea";
 const MAGIC_PILL = "Magic Pill";
+const DAFALGAN = "Dafalgan";
 
 const BENEFIT_MAX = 50;
 const BENEFIT_MIN = 0;
@@ -39,10 +40,15 @@ export class Drug {
 }
 
 class DefaultUpdateBenefitStrategy {
+
+  constructor(multiplier = 1) {
+    this.multiplier = multiplier;
+  }
+
   updateBenefit(drug) {
     //Once the expiration date has passed, Benefit degrades twice as fast.
     const lost = drug.isExpired ? 2 : 1;
-    drug.decreaseBenefitBy(lost)
+    drug.decreaseBenefitBy(lost * this.multiplier)
   }
 
   updateExpireIn(drug) {
@@ -78,7 +84,7 @@ class HerbalTeaUpdateBenefitStrategy extends DefaultUpdateBenefitStrategy {
 }
 
 // "Magic Pill" never expires nor decreases in Benefit.
-class MagicPillTeaUpdateBenefitStrategy extends DefaultUpdateBenefitStrategy {
+class MagicPillUpdateBenefitStrategy extends DefaultUpdateBenefitStrategy {
   updateBenefit(drug) {
     // do nothing
   }
@@ -88,15 +94,22 @@ class MagicPillTeaUpdateBenefitStrategy extends DefaultUpdateBenefitStrategy {
   }
 }
 
+// "Dafalgan" degrades in Benefit twice as fast as normal drugs.
+class DafalganUpdateBenefitStrategy extends DefaultUpdateBenefitStrategy {
+  constructor() {
+    super(2)
+  }
+}
+
 class UpdateBenefitStrategyFactory {
   getUpdateBenefitStrategy(drug) {
     switch (drug.name) {
       case FERVEX: return new FervexUpdateBenefitStrategy();
       case HERBAL_TEA: return new HerbalTeaUpdateBenefitStrategy();
-      case MAGIC_PILL: return new MagicPillTeaUpdateBenefitStrategy();
+      case MAGIC_PILL: return new MagicPillUpdateBenefitStrategy();
+      case DAFALGAN: return new DafalganUpdateBenefitStrategy();
       default: return new DefaultUpdateBenefitStrategy()
     }
-
   }
 }
 

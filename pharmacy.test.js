@@ -73,7 +73,7 @@ describe("Pharmacy", () => {
   })
 
   // "Magic Pill" never expires nor decreases in Benefit.
-  it("should 'Magic Pill' never expire nor decreases in Benefit", () => {
+  it("should 'Magic Pill' never expire nor decrease in Benefit", () => {
     expect(new Pharmacy([
       new Drug("Magic Pill", 1, 25),
       new Drug("Magic Pill", 1, 0),
@@ -118,4 +118,21 @@ describe("Pharmacy", () => {
       new Drug("Fervex", -1, 0)
     ]);
   })
+
+
+  it("should Dafalgan Benefit descrease twice faster that a normal drug", () => {
+    expect(new Pharmacy([
+      new Drug("Dafalgan", 1, 10),
+      new Drug("test", 1, 10),
+      new Drug("Dafalgan", 0, 10),
+      new Drug("test", 0, 10)
+
+    ]).updateBenefitValue()).toEqual([
+      new Drug("Dafalgan", 0, 8),
+      new Drug("test", 0, 9),
+      new Drug("Dafalgan", -1, 6),
+      new Drug("test", -1, 8)
+    ]);
+  })
+
 });

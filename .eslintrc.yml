@@ -1,7 +1,11 @@
 env:
   jest: true
   node: true
-parser: babel-eslint
+parserOptions:
+  ecmaVersion: 13
+  sourceType: "module"
+plugins:
+  - prettier
 extends:
   - eslint:recommended
   - plugin:prettier/recommended

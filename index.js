@@ -1,4 +1,4 @@
-import { Drug, Pharmacy } from "./pharmacy";
+import { Drug, Pharmacy } from "./pharmacy.js";
 import fs from "fs";
 
 const drugs = [
@@ -16,11 +16,10 @@ for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
 }
 
 /* eslint-disable no-console */
-fs.writeFile("output.txt", log.toString(), err => {
-  if (err) {
-    console.log("error");
-  } else {
-    console.log("success");
-  }
-});
+try {
+  fs.writeFileSync("output-received.txt", log.toString());
+  console.log("success");
+} catch (error) {
+  console.log("error");
+}
 /* eslint-enable no-console */

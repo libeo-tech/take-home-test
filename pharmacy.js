@@ -11,6 +11,10 @@ export class Drug {
   }
 
   updateBenefit() {
+    if (this.name === "Magic Pill") {
+      return;
+    }
+
     if (this.name === "Herbal Tea") {
       this.#updateHerbalTea();
       return;
@@ -21,21 +25,19 @@ export class Drug {
       return;
     }
 
+    this.#updateRegular();
+  }
+
+  #updateRegular() {
     if (this.benefit > 0) {
-      if (this.name !== "Magic Pill") {
-        this.benefit = this.benefit - 1;
-      }
+      this.benefit = this.benefit - 1;
     }
 
-    if (this.name !== "Magic Pill") {
-      this.expiresIn = this.expiresIn - 1;
-    }
+    this.expiresIn = this.expiresIn - 1;
 
     if (this.expiresIn < 0) {
       if (this.benefit > 0) {
-        if (this.name !== "Magic Pill") {
-          this.benefit = this.benefit - 1;
-        }
+        this.benefit = this.benefit - 1;
       }
     }
   }

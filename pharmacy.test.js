@@ -95,7 +95,7 @@ describe("Special drugs", () => {
   });
 
   it("should not have a benefit over 50 for Fervex", () => {
-    const drug = new Drug("Herbal Tea", 10, 45);
+    const drug = new Drug("Fervex", 10, 45);
     updateDrugBy(drug, 8);
 
     expect(drug.expiresIn).toBe(2);

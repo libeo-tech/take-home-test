@@ -64,16 +64,14 @@ export class Drug {
   }
 
   #updateFervex() {
-    if (this.benefit < MAX_BENEFIT) {
-      this.benefit++;
+    this.#increaseBenefit();
 
-      if (this.expiresIn < 11) {
-        this.#increaseBenefit();
-      }
+    if (this.expiresIn < 11) {
+      this.#increaseBenefit();
+    }
 
-      if (this.expiresIn < 6) {
-        this.#increaseBenefit();
-      }
+    if (this.expiresIn < 6) {
+      this.#increaseBenefit();
     }
 
     this.expiresIn--;
@@ -94,9 +92,7 @@ export class Drug {
   }
 
   #decreaseBenefit(by = 1) {
-    if (this.benefit > MIN_BENEFIT) {
-      this.benefit = this.benefit - by;
-    }
+    this.benefit = this.benefit - by;
 
     if (this.benefit < MIN_BENEFIT) {
       this.benefit = MIN_BENEFIT;
@@ -104,9 +100,7 @@ export class Drug {
   }
 
   #increaseBenefit(by = 1) {
-    if (this.benefit < MAX_BENEFIT) {
-      this.benefit = this.benefit + by;
-    }
+    this.benefit = this.benefit + by;
 
     if (this.benefit > MAX_BENEFIT) {
       this.benefit = MAX_BENEFIT;

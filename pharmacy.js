@@ -44,26 +44,22 @@ export class Drug {
   }
 
   #updateRegular() {
-    if (this.benefit > MIN_BENEFIT) {
-      this.benefit--;
-    }
+    this.#decreaseBenefit();
 
     this.expiresIn--;
 
-    if (this.expiresIn < 0 && this.benefit > MIN_BENEFIT) {
-      this.benefit--;
+    if (this.expiresIn < 0) {
+      this.#decreaseBenefit();
     }
   }
 
   #updateHerbalTea() {
-    if (this.benefit < MAX_BENEFIT) {
-      this.benefit++;
-    }
+    this.#increaseBenefit();
 
     this.expiresIn--;
 
-    if (this.expiresIn < 0 && this.benefit < MAX_BENEFIT) {
-      this.benefit++;
+    if (this.expiresIn < 0) {
+      this.#increaseBenefit();
     }
   }
 
@@ -71,12 +67,12 @@ export class Drug {
     if (this.benefit < MAX_BENEFIT) {
       this.benefit++;
 
-      if (this.expiresIn < 11 && this.benefit < MAX_BENEFIT) {
-        this.benefit++;
+      if (this.expiresIn < 11) {
+        this.#increaseBenefit();
       }
 
-      if (this.expiresIn < 6 && this.benefit < MAX_BENEFIT) {
-        this.benefit++;
+      if (this.expiresIn < 6) {
+        this.#increaseBenefit();
       }
     }
 
@@ -88,18 +84,32 @@ export class Drug {
   }
 
   #updateDafalgan() {
-    if (this.benefit > MIN_BENEFIT) {
-      this.benefit = this.benefit - 2;
-    }
+    this.#decreaseBenefit(2);
 
     this.expiresIn--;
 
-    if (this.expiresIn < 0 && this.benefit > MIN_BENEFIT) {
-      this.benefit = this.benefit - 2;
+    if (this.expiresIn < 0) {
+      this.#decreaseBenefit(2);
+    }
+  }
+
+  #decreaseBenefit(by = 1) {
+    if (this.benefit > MIN_BENEFIT) {
+      this.benefit = this.benefit - by;
     }
 
     if (this.benefit < MIN_BENEFIT) {
       this.benefit = MIN_BENEFIT;
+    }
+  }
+
+  #increaseBenefit(by = 1) {
+    if (this.benefit < MAX_BENEFIT) {
+      this.benefit = this.benefit + by;
+    }
+
+    if (this.benefit > MAX_BENEFIT) {
+      this.benefit = MAX_BENEFIT;
     }
   }
 }

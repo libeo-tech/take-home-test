@@ -45,52 +45,45 @@ export class Drug {
 
   #updateRegular() {
     if (this.benefit > MIN_BENEFIT) {
-      this.benefit = this.benefit - 1;
+      this.benefit--;
     }
 
-    this.expiresIn = this.expiresIn - 1;
+    this.expiresIn--;
 
-    if (this.expiresIn < 0) {
-      if (this.benefit > MIN_BENEFIT) {
-        this.benefit = this.benefit - 1;
-      }
+    if (this.expiresIn < 0 && this.benefit > MIN_BENEFIT) {
+      this.benefit--;
     }
   }
 
   #updateHerbalTea() {
     if (this.benefit < MAX_BENEFIT) {
-      this.benefit = this.benefit + 1;
+      this.benefit++;
     }
 
-    this.expiresIn = this.expiresIn - 1;
+    this.expiresIn--;
 
-    if (this.expiresIn < 0) {
-      if (this.benefit < MAX_BENEFIT) {
-        this.benefit = this.benefit + 1;
-      }
+    if (this.expiresIn < 0 && this.benefit < MAX_BENEFIT) {
+      this.benefit++;
     }
   }
 
   #updateFervex() {
     if (this.benefit < MAX_BENEFIT) {
-      this.benefit = this.benefit + 1;
+      this.benefit++;
 
-      if (this.expiresIn < 11) {
-        if (this.benefit < MAX_BENEFIT) {
-          this.benefit = this.benefit + 1;
-        }
+      if (this.expiresIn < 11 && this.benefit < MAX_BENEFIT) {
+        this.benefit++;
       }
-      if (this.expiresIn < 6) {
-        if (this.benefit < MAX_BENEFIT) {
-          this.benefit = this.benefit + 1;
-        }
+
+      if (this.expiresIn < 6 && this.benefit < MAX_BENEFIT) {
+        this.benefit++;
       }
     }
 
-    this.expiresIn = this.expiresIn - 1;
+    this.expiresIn--;
 
     if (this.expiresIn < 0) {
-      this.benefit = this.benefit - this.benefit;
+      this.benefit = MIN_BENEFIT;
     }
   }
 
@@ -99,12 +92,10 @@ export class Drug {
       this.benefit = this.benefit - 2;
     }
 
-    this.expiresIn = this.expiresIn - 1;
+    this.expiresIn--;
 
-    if (this.expiresIn < 0) {
-      if (this.benefit > MIN_BENEFIT) {
-        this.benefit = this.benefit - 2;
-      }
+    if (this.expiresIn < 0 && this.benefit > MIN_BENEFIT) {
+      this.benefit = this.benefit - 2;
     }
 
     if (this.benefit < MIN_BENEFIT) {

@@ -44,51 +44,33 @@ export class Drug {
   }
 
   #updateRegular() {
-    this.#decreaseBenefit();
-
     this.expiresIn--;
-
-    if (this.expiresIn < 0) {
-      this.#decreaseBenefit();
-    }
+    const dec = this.expiresIn < 0 ? 2 : 1;
+    this.#decreaseBenefit(dec);
   }
 
   #updateHerbalTea() {
-    this.#increaseBenefit();
-
     this.expiresIn--;
-
-    if (this.expiresIn < 0) {
-      this.#increaseBenefit();
-    }
+    const inc = this.expiresIn < 0 ? 2 : 1;
+    this.#increaseBenefit(inc);
   }
 
   #updateFervex() {
-    this.#increaseBenefit();
-
-    if (this.expiresIn < 11) {
-      this.#increaseBenefit();
-    }
-
-    if (this.expiresIn < 6) {
-      this.#increaseBenefit();
-    }
-
     this.expiresIn--;
 
     if (this.expiresIn < 0) {
       this.benefit = MIN_BENEFIT;
+      return;
     }
+
+    const inc = this.expiresIn < 5 ? 3 : this.expiresIn < 10 ? 2 : 1;
+    this.#increaseBenefit(inc);
   }
 
   #updateDafalgan() {
-    this.#decreaseBenefit(2);
-
     this.expiresIn--;
-
-    if (this.expiresIn < 0) {
-      this.#decreaseBenefit(2);
-    }
+    const dec = this.expiresIn < 0 ? 4 : 2;
+    this.#decreaseBenefit(dec);
   }
 
   #decreaseBenefit(by = 1) {

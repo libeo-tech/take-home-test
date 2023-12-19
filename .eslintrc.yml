@@ -2,7 +2,7 @@ env:
   jest: true
   node: true
 parserOptions:
-  ecmaVersion: 2015
+  ecmaVersion: 13
   sourceType: "module"
 plugins:
   - prettier

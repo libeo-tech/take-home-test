@@ -35,6 +35,11 @@ export class Drug {
       return;
     }
 
+    if (this.name === "Dafalgan") {
+      this.#updateDafalgan();
+      return;
+    }
+
     this.#updateRegular();
   }
 
@@ -86,6 +91,24 @@ export class Drug {
 
     if (this.expiresIn < 0) {
       this.benefit = this.benefit - this.benefit;
+    }
+  }
+
+  #updateDafalgan() {
+    if (this.benefit > MIN_BENEFIT) {
+      this.benefit = this.benefit - 2;
+    }
+
+    this.expiresIn = this.expiresIn - 1;
+
+    if (this.expiresIn < 0) {
+      if (this.benefit > MIN_BENEFIT) {
+        this.benefit = this.benefit - 2;
+      }
+    }
+
+    if (this.benefit < MIN_BENEFIT) {
+      this.benefit = MIN_BENEFIT;
     }
   }
 }

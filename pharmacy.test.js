@@ -101,6 +101,22 @@ describe("Special drugs", () => {
     expect(drug.expiresIn).toBe(2);
     expect(drug.benefit).toBe(50);
   });
+
+  it("should decrease benefit twice as fast for Dafalgan", () => {
+    const drug = new Drug("Dafalgan", 5, 40);
+
+    updateDrugBy(drug, 5);
+    expect(drug.expiresIn).toBe(0);
+    expect(drug.benefit).toBe(30);
+
+    updateDrugBy(drug, 5);
+    expect(drug.expiresIn).toBe(-5);
+    expect(drug.benefit).toBe(10);
+
+    updateDrugBy(drug, 5);
+    expect(drug.expiresIn).toBe(-10);
+    expect(drug.benefit).toBe(0);
+  });
 });
 
 /**

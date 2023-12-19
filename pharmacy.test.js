@@ -31,6 +31,14 @@ describe("Pharmacy and regular drugs", () => {
 
     expect(pharmacy.drugs).toEqual(expected);
   });
+
+  it("should not have a benefit out of bounds", () => {
+    const drugA = new Drug("test", 1, 80);
+    expect(drugA.benefit).toBe(50);
+
+    const drugB = new Drug("test", 1, -10);
+    expect(drugB.benefit).toBe(0);
+  });
 });
 
 describe("Special drugs", () => {

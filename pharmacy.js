@@ -1,3 +1,6 @@
+const MAX_BENEFIT = 50;
+const MIN_BENEFIT = 0;
+
 export class Drug {
   /**
    * @param {string} name
@@ -7,7 +10,14 @@ export class Drug {
   constructor(name, expiresIn, benefit) {
     this.name = name;
     this.expiresIn = expiresIn;
-    this.benefit = benefit;
+
+    /** @type {number} */
+    this.benefit =
+      benefit < MIN_BENEFIT
+        ? MIN_BENEFIT
+        : benefit > MAX_BENEFIT
+          ? MAX_BENEFIT
+          : benefit;
   }
 
   updateBenefit() {
@@ -29,44 +39,44 @@ export class Drug {
   }
 
   #updateRegular() {
-    if (this.benefit > 0) {
+    if (this.benefit > MIN_BENEFIT) {
       this.benefit = this.benefit - 1;
     }
 
     this.expiresIn = this.expiresIn - 1;
 
     if (this.expiresIn < 0) {
-      if (this.benefit > 0) {
+      if (this.benefit > MIN_BENEFIT) {
         this.benefit = this.benefit - 1;
       }
     }
   }
 
   #updateHerbalTea() {
-    if (this.benefit < 50) {
+    if (this.benefit < MAX_BENEFIT) {
       this.benefit = this.benefit + 1;
     }
 
     this.expiresIn = this.expiresIn - 1;
 
     if (this.expiresIn < 0) {
-      if (this.benefit < 50) {
+      if (this.benefit < MAX_BENEFIT) {
         this.benefit = this.benefit + 1;
       }
     }
   }
 
   #updateFervex() {
-    if (this.benefit < 50) {
+    if (this.benefit < MAX_BENEFIT) {
       this.benefit = this.benefit + 1;
 
       if (this.expiresIn < 11) {
-        if (this.benefit < 50) {
+        if (this.benefit < MAX_BENEFIT) {
           this.benefit = this.benefit + 1;
         }
       }
       if (this.expiresIn < 6) {
-        if (this.benefit < 50) {
+        if (this.benefit < MAX_BENEFIT) {
           this.benefit = this.benefit + 1;
         }
       }

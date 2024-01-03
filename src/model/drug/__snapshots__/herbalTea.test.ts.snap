@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Herbal Tea should be serializable to JSON 1`] = `
+Object {
+  "benefit": 5,
+  "expiresIn": 30,
+  "name": "Herbal Tea",
+}
+`;
+
+exports[`Herbal Tea should be serializable to string 1`] = `"{\\"name\\":\\"Herbal Tea\\",\\"expiresIn\\":30,\\"benefit\\":5}"`;
+
+exports[`Herbal Tea should increase benefit twice as much if expired 1`] = `
+Object {
+  "benefit": 7,
+  "expiresIn": -1,
+  "name": "Herbal Tea",
+}
+`;
+
+exports[`Herbal Tea should increase benefit with time 1`] = `
+Object {
+  "benefit": 6,
+  "expiresIn": 29,
+  "name": "Herbal Tea",
+}
+`;
+
+exports[`Herbal Tea should not allow for a benefit greater than 50 1`] = `
+Object {
+  "benefit": 50,
+  "expiresIn": 30,
+  "name": "Herbal Tea",
+}
+`;
+
+exports[`Herbal Tea should not allow for a negative benefit 1`] = `
+Object {
+  "benefit": 0,
+  "expiresIn": 30,
+  "name": "Herbal Tea",
+}
+`;

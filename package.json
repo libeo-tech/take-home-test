@@ -20,6 +20,8 @@
     "@babel/core": "^7.1.0",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/jest": "^29.5.11",
     "@types/validatorjs": "^3.15.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",

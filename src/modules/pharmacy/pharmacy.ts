@@ -1,61 +1,29 @@
+import Validator from "validatorjs";
 import { Drug } from "../drug/drug";
+
+const DRUG_VALIDATION_RULE = {
+  name: "required|string",
+  expiresIn: "required|integer",
+  benefit: "required|integer",
+};
+const validator = (body: Object, rules: Validator.Rules) => {
+  const validation = new Validator(body, rules);
+  return validation.passes();
+};
 
 export class Pharmacy {
   drugs: Drug[];
-  constructor(drugs: Drug[] = []) {
-    this.drugs = drugs;
+  constructor(drugs: Drug[]) {
+    this.drugs = drugs.filter(({ name, expiresIn, benefit }) =>
+      validator({ name, expiresIn, benefit }, DRUG_VALIDATION_RULE)
+    );
   }
-  updateBenefitValue() {
-    for (var i = 0; i < this.drugs.length; i++) {
-      if (
-        this.drugs[i].name != "Herbal Tea" &&
-        this.drugs[i].name != "Fervex"
-      ) {
-        if (this.drugs[i].benefit > 0) {
-          if (this.drugs[i].name != "Magic Pill") {
-            this.drugs[i].benefit = this.drugs[i].benefit - 1;
-          }
-        }
-      } else {
-        if (this.drugs[i].benefit < 50) {
-          this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          if (this.drugs[i].name == "Fervex") {
-            if (this.drugs[i].expiresIn < 11) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-            if (this.drugs[i].expiresIn < 6) {
-              if (this.drugs[i].benefit < 50) {
-                this.drugs[i].benefit = this.drugs[i].benefit + 1;
-              }
-            }
-          }
-        }
-      }
-      if (this.drugs[i].name != "Magic Pill") {
-        this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
-      }
-      if (this.drugs[i].expiresIn < 0) {
-        if (this.drugs[i].name != "Herbal Tea") {
-          if (this.drugs[i].name != "Fervex") {
-            if (this.drugs[i].benefit > 0) {
-              if (this.drugs[i].name != "Magic Pill") {
-                this.drugs[i].benefit = this.drugs[i].benefit - 1;
-              }
-            }
-          } else {
-            this.drugs[i].benefit =
-              this.drugs[i].benefit - this.drugs[i].benefit;
-          }
-        } else {
-          if (this.drugs[i].benefit < 50) {
-            this.drugs[i].benefit = this.drugs[i].benefit + 1;
-          }
-        }
-      }
-    }
 
-    return this.drugs;
+  updateBenefitValue(): Drug[] {
+    return this.drugs.map((drug) => {
+      drug.computeNextBenefit();
+      drug.expiration();
+      return drug;
+    });
   }
 }

@@ -3,6 +3,9 @@ const MAGIC_PILL = "Magic Pill";
 const FERVEX = "Fervex";
 const DAFALGAN = "Dafalgan";
 
+const MAX_BENEFIT = 50;
+const MIN_BENEFIT = 0;
+
 const DEFAULT_BENEFIT_DECREASE = 1;
 export class Drug {
   name: string;
@@ -20,13 +23,13 @@ export class Drug {
       : DEFAULT_BENEFIT_DECREASE * 2;
   }
 
-  expiration() {
+  expiration = (): void => {
     if (this.name !== MAGIC_PILL) this.expiresIn--;
-  }
+  };
 
   private applyBenefitConstraints = (): void => {
-    if (this.benefit > 50) this.benefit = 50;
-    else if (this.benefit < 0) this.benefit = 0;
+    if (this.benefit > MAX_BENEFIT) this.benefit = MAX_BENEFIT;
+    else if (this.benefit < MIN_BENEFIT) this.benefit = MIN_BENEFIT;
   };
 
   computeNextBenefit(): void {
@@ -43,7 +46,7 @@ export class Drug {
 
       case FERVEX:
         if (this.benefit === 0) return;
-        if (this.expiresIn < 1) this.benefit = 0;
+        if (this.expiresIn < 1) this.benefit = MIN_BENEFIT;
         else if (this.expiresIn < 6)
           this.benefit += DEFAULT_BENEFIT_DECREASE * 3;
         else if (this.expiresIn < 11)

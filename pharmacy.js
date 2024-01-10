@@ -87,6 +87,9 @@ class Dafalgan extends Drug {
   }
 }
 
+/**
+ * @type {{[key: string]: (drug: Drug) => Drug}}
+ */
 const drugsClassHandler = {
   "Herbal Tea": drug => new HerbalTea(drug.name, drug.expiresIn, drug.benefit),
   "Magic Pill": drug => new MagicPill(drug.name, drug.expiresIn, drug.benefit),

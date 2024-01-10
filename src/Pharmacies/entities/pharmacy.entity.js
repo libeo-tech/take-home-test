@@ -18,13 +18,13 @@ export class Pharmacy {
    */
   constructor(drugs = []) {
     this.drugs = [];
-    for (let drug of drugs) {
-      if (drug.name in drugsClassHandler) {
-        this.drugs.push(drugsClassHandler[drug.name](drug));
-      } else {
-        this.drugs.push(drug);
-      }
-    }
+    drugs.forEach(drug => {
+      this.drugs.push(
+        drug.name in drugsClassHandler
+          ? drugsClassHandler[drug.name](drug)
+          : drug
+      );
+    });
   }
 
   /**
@@ -32,11 +32,7 @@ export class Pharmacy {
    * @returns {Drug[]}
    */
   updateBenefitValue() {
-    for (const drug of this.drugs) {
-      drug.updateExpiresIn();
-      drug.updateBenefit();
-    }
-
+    this.drugs.forEach(drug => drug.update());
     return this.drugs;
   }
 }

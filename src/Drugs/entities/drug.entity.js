@@ -33,4 +33,12 @@ export class Drug {
   updateExpiresIn() {
     --this.expiresIn;
   }
+
+  /**
+   * Update the benefit and expiresIn.
+   */
+  update() {
+    this.updateExpiresIn();
+    this.updateBenefit();
+  }
 }

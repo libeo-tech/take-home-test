@@ -15,15 +15,20 @@ export class Drug {
    * Set the value of benefit.
    */
   updateBenefit() {
-    if (this.benefit > 0) {
-      if (this.expiresIn >= 0) {
-        --this.benefit;
-      } else {
-        this.benefit = this.benefit - 2;
-        if (this.benefit < 0) {
-          this.benefit = 0;
-        }
-      }
+    if (this.isExpired()) {
+      this.setBenefit(this.benefit - 2);
+    } else {
+      this.setBenefit(this.benefit - 1);
+    }
+  }
+
+  setBenefit(benefit) {
+    if (benefit < 0) {
+      this.benefit = 0;
+    } else if (benefit > 50) {
+      this.benefit = 50;
+    } else {
+      this.benefit = benefit;
     }
   }
 
@@ -40,5 +45,13 @@ export class Drug {
   update() {
     this.updateExpiresIn();
     this.updateBenefit();
+  }
+
+  /**
+   * Check if the expiresIn is negative.
+   * @returns {boolean}
+   */
+  isExpired() {
+    return this.expiresIn < 0;
   }
 }

@@ -8,7 +8,7 @@ describe("Pharmacy", () => {
       ).toEqual([new Drug("test", 1, 2)]);
     });
 
-    it("should decrease the benefit by 2 and expiresIn", () => {
+    it("should decrease the benefit by 2 when it's expired", () => {
       expect(
         new Pharmacy([new Drug("test", 0, 3)]).updateBenefitValue()
       ).toEqual([new Drug("test", -1, 1)]);
@@ -26,6 +26,12 @@ describe("Pharmacy", () => {
       expect(
         new Pharmacy([new Drug("Herbal Tea", 2, 3)]).updateBenefitValue()
       ).toEqual([new Drug("Herbal Tea", 1, 4)]);
+    });
+
+    it("should set the benefit to 50", () => {
+      expect(
+        new Pharmacy([new Drug("Herbal Tea", 4, 49)]).updateBenefitValue()
+      ).toEqual([new Drug("Herbal Tea", 3, 50)]);
     });
 
     it("should increase the benefit by 2 and decrease expiresIn", () => {
@@ -54,6 +60,12 @@ describe("Pharmacy", () => {
       expect(
         new Pharmacy([new Drug("Fervex", 9, 3)]).updateBenefitValue()
       ).toEqual([new Drug("Fervex", 8, 5)]);
+    });
+
+    it("should set the benefit to 50", () => {
+      expect(
+        new Pharmacy([new Drug("Fervex", 4, 49)]).updateBenefitValue()
+      ).toEqual([new Drug("Fervex", 3, 50)]);
     });
 
     it("should increase the benefit by 3 and decrease expiresIn", () => {

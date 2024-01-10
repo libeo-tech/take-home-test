@@ -22,6 +22,10 @@ export class Drug {
     }
   }
 
+  /**
+   * Set the value benefit.
+   * @param {number} benefit value which denotes how powerful the drug is.
+   */
   setBenefit(benefit) {
     if (benefit < 0) {
       this.benefit = 0;

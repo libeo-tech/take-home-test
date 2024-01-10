@@ -13,7 +13,6 @@ export class Drug {
 
   /**
    * Set the value of benefit.
-   * @param {number} benefit value which denotes how powerful the drug is.
    */
   updateBenefit() {
     if (this.benefit > 0) {
@@ -45,7 +44,15 @@ class MagicPill extends Drug {
 class Fervex extends Drug {
   updateBenefit() {
     if (this.benefit < 50) {
-      this.benefit = this.expiresIn <= 10 ? this.benefit + 2 : this.benefit + 1;
+      if (this.expiresIn < 0) {
+        this.benefit = 0;
+      } else if (this.expiresIn <= 5) {
+        this.benefit = this.benefit + 3;
+      } else if (this.expiresIn <= 10) {
+        this.benefit = this.benefit + 2;
+      } else {
+        ++this.benefit;
+      }
     }
   }
 }
@@ -72,6 +79,10 @@ export class Pharmacy {
     }
   }
 
+  /**
+   * Update the expiresIn and benefit values.
+   * @returns {Drug[]}
+   */
   updateBenefitValue() {
     for (const drug of this.drugs) {
       drug.updateExpiresIn();

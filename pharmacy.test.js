@@ -46,14 +46,26 @@ describe("Pharmacy", () => {
   describe("Fervex", () => {
     it("should increase the benefit by 2 and decrease expiresIn", () => {
       expect(
-        new Pharmacy([new Drug("Fervex", 2, 3)]).updateBenefitValue()
-      ).toEqual([new Drug("Fervex", 1, 5)]);
+        new Pharmacy([new Drug("Fervex", 9, 3)]).updateBenefitValue()
+      ).toEqual([new Drug("Fervex", 8, 5)]);
+    });
+
+    it("should increase the benefit by 3 and decrease expiresIn", () => {
+      expect(
+        new Pharmacy([new Drug("Fervex", 4, 3)]).updateBenefitValue()
+      ).toEqual([new Drug("Fervex", 3, 6)]);
+    });
+
+    it("should drop the benefit to 0 and decrease expiresIn", () => {
+      expect(
+        new Pharmacy([new Drug("Fervex", 0, 30)]).updateBenefitValue()
+      ).toEqual([new Drug("Fervex", -1, 0)]);
     });
 
     it("should not increase the benefit", () => {
       expect(
-        new Pharmacy([new Drug("Fervex", 0, 50)]).updateBenefitValue()
-      ).toEqual([new Drug("Fervex", -1, 50)]);
+        new Pharmacy([new Drug("Fervex", 9, 50)]).updateBenefitValue()
+      ).toEqual([new Drug("Fervex", 8, 50)]);
     });
   });
 });

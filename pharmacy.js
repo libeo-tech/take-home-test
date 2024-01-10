@@ -16,7 +16,14 @@ export class Drug {
    */
   updateBenefit() {
     if (this.benefit > 0) {
-      --this.benefit;
+      if (this.expiresIn >= 0) {
+        --this.benefit;
+      } else {
+        this.benefit = this.benefit - 2;
+        if (this.benefit < 0) {
+          this.benefit = 0;
+        }
+      }
     }
   }
 
@@ -57,10 +64,26 @@ class Fervex extends Drug {
   }
 }
 
+class Dafalgan extends Drug {
+  updateBenefit() {
+    if (this.benefit > 0) {
+      if (this.expiresIn >= 0) {
+        this.benefit = this.benefit - 2;
+      } else {
+        this.benefit = this.benefit - 4;
+      }
+      if (this.benefit < 0) {
+        this.benefit = 0;
+      }
+    }
+  }
+}
+
 const drugsClassHandler = {
   "Herbal Tea": drug => new HerbalTea(drug.name, drug.expiresIn, drug.benefit),
   "Magic Pill": drug => new MagicPill(drug.name, drug.expiresIn, drug.benefit),
-  Fervex: drug => new Fervex(drug.name, drug.expiresIn, drug.benefit)
+  Fervex: drug => new Fervex(drug.name, drug.expiresIn, drug.benefit),
+  Dafalgan: drug => new Dafalgan(drug.name, drug.expiresIn, drug.benefit)
 };
 
 export class Pharmacy {

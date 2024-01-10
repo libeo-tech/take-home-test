@@ -8,6 +8,12 @@ describe("Pharmacy", () => {
       ).toEqual([new Drug("test", 1, 2)]);
     });
 
+    it("should decrease the benefit by 2 and expiresIn", () => {
+      expect(
+        new Pharmacy([new Drug("test", 0, 3)]).updateBenefitValue()
+      ).toEqual([new Drug("test", -1, 1)]);
+    });
+
     it("should unchange benefit and decrease expiresIn", () => {
       expect(
         new Pharmacy([new Drug("test", 0, 0)]).updateBenefitValue()

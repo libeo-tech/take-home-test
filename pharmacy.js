@@ -74,8 +74,8 @@ export class Pharmacy {
 
   updateBenefitValue() {
     for (const drug of this.drugs) {
-      drug.updateBenefit(drug.benefit - 1);
-      drug.updateExpiresIn(drug.expiresIn - 1);
+      drug.updateExpiresIn();
+      drug.updateBenefit();
     }
 
     return this.drugs;

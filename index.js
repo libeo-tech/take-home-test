@@ -12,11 +12,11 @@ const trial = new Pharmacy(drugs);
 const log = [];
 
 for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
-  log.push(JSON.stringify(trial.updateBenefitValue()));
+  log.push(structuredClone(trial.updateBenefitValue()));
 }
 
 /* eslint-disable no-console */
-fs.writeFile("output.txt", log.toString(), err => {
+fs.writeFile("output.json", JSON.stringify(log, null, 2), err => {
   if (err) {
     console.log("error");
   } else {

@@ -3,8 +3,8 @@ FROM node:18-alpine
 WORKDIR /usr/src
 
 COPY package.json /usr/src/package.json
-RUN yarn install
+RUN npm install
 
 COPY . /usr/src/
 
-CMD ["yarn", "start"]
+CMD ["npm", "start"]

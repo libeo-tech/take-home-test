@@ -57,8 +57,5 @@ To make sure that you will not break anything in the existing code, we added a l
 npm start
 ```
 ```sh
-yarn start
-```
-```sh
 docker-compose up
 ```

@@ -1,1 +1,572 @@
-[{"name":"Doliprane","expiresIn":19,"benefit":29},{"name":"Herbal Tea","expiresIn":9,"benefit":6},{"name":"Fervex","expiresIn":4,"benefit":43},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":18,"benefit":28},{"name":"Herbal Tea","expiresIn":8,"benefit":7},{"name":"Fervex","expiresIn":3,"benefit":46},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":17,"benefit":27},{"name":"Herbal Tea","expiresIn":7,"benefit":8},{"name":"Fervex","expiresIn":2,"benefit":49},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":16,"benefit":26},{"name":"Herbal Tea","expiresIn":6,"benefit":9},{"name":"Fervex","expiresIn":1,"benefit":50},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":15,"benefit":25},{"name":"Herbal Tea","expiresIn":5,"benefit":10},{"name":"Fervex","expiresIn":0,"benefit":50},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":14,"benefit":24},{"name":"Herbal Tea","expiresIn":4,"benefit":11},{"name":"Fervex","expiresIn":-1,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":13,"benefit":23},{"name":"Herbal Tea","expiresIn":3,"benefit":12},{"name":"Fervex","expiresIn":-2,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":12,"benefit":22},{"name":"Herbal Tea","expiresIn":2,"benefit":13},{"name":"Fervex","expiresIn":-3,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":11,"benefit":21},{"name":"Herbal Tea","expiresIn":1,"benefit":14},{"name":"Fervex","expiresIn":-4,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":10,"benefit":20},{"name":"Herbal Tea","expiresIn":0,"benefit":15},{"name":"Fervex","expiresIn":-5,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":9,"benefit":19},{"name":"Herbal Tea","expiresIn":-1,"benefit":17},{"name":"Fervex","expiresIn":-6,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":8,"benefit":18},{"name":"Herbal Tea","expiresIn":-2,"benefit":19},{"name":"Fervex","expiresIn":-7,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":7,"benefit":17},{"name":"Herbal Tea","expiresIn":-3,"benefit":21},{"name":"Fervex","expiresIn":-8,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":6,"benefit":16},{"name":"Herbal Tea","expiresIn":-4,"benefit":23},{"name":"Fervex","expiresIn":-9,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":5,"benefit":15},{"name":"Herbal Tea","expiresIn":-5,"benefit":25},{"name":"Fervex","expiresIn":-10,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":4,"benefit":14},{"name":"Herbal Tea","expiresIn":-6,"benefit":27},{"name":"Fervex","expiresIn":-11,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":3,"benefit":13},{"name":"Herbal Tea","expiresIn":-7,"benefit":29},{"name":"Fervex","expiresIn":-12,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":2,"benefit":12},{"name":"Herbal Tea","expiresIn":-8,"benefit":31},{"name":"Fervex","expiresIn":-13,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":1,"benefit":11},{"name":"Herbal Tea","expiresIn":-9,"benefit":33},{"name":"Fervex","expiresIn":-14,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":0,"benefit":10},{"name":"Herbal Tea","expiresIn":-10,"benefit":35},{"name":"Fervex","expiresIn":-15,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-1,"benefit":8},{"name":"Herbal Tea","expiresIn":-11,"benefit":37},{"name":"Fervex","expiresIn":-16,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-2,"benefit":6},{"name":"Herbal Tea","expiresIn":-12,"benefit":39},{"name":"Fervex","expiresIn":-17,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-3,"benefit":4},{"name":"Herbal Tea","expiresIn":-13,"benefit":41},{"name":"Fervex","expiresIn":-18,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-4,"benefit":2},{"name":"Herbal Tea","expiresIn":-14,"benefit":43},{"name":"Fervex","expiresIn":-19,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-5,"benefit":0},{"name":"Herbal Tea","expiresIn":-15,"benefit":45},{"name":"Fervex","expiresIn":-20,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-6,"benefit":0},{"name":"Herbal Tea","expiresIn":-16,"benefit":47},{"name":"Fervex","expiresIn":-21,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-7,"benefit":0},{"name":"Herbal Tea","expiresIn":-17,"benefit":49},{"name":"Fervex","expiresIn":-22,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-8,"benefit":0},{"name":"Herbal Tea","expiresIn":-18,"benefit":50},{"name":"Fervex","expiresIn":-23,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-9,"benefit":0},{"name":"Herbal Tea","expiresIn":-19,"benefit":50},{"name":"Fervex","expiresIn":-24,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}],[{"name":"Doliprane","expiresIn":-10,"benefit":0},{"name":"Herbal Tea","expiresIn":-20,"benefit":50},{"name":"Fervex","expiresIn":-25,"benefit":0},{"name":"Magic Pill","expiresIn":15,"benefit":40}]
+[
+  {
+    "day": 1,
+    "Herbal Tea": {
+      "expiresIn": 9,
+      "benefit": 6
+    },
+    "Fervex": {
+      "expiresIn": 4,
+      "benefit": 43
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": 2,
+      "benefit": 13
+    }
+  },
+  {
+    "day": 2,
+    "Herbal Tea": {
+      "expiresIn": 8,
+      "benefit": 7
+    },
+    "Fervex": {
+      "expiresIn": 3,
+      "benefit": 46
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": 1,
+      "benefit": 11
+    }
+  },
+  {
+    "day": 3,
+    "Herbal Tea": {
+      "expiresIn": 7,
+      "benefit": 8
+    },
+    "Fervex": {
+      "expiresIn": 2,
+      "benefit": 49
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": 0,
+      "benefit": 9
+    }
+  },
+  {
+    "day": 4,
+    "Herbal Tea": {
+      "expiresIn": 6,
+      "benefit": 9
+    },
+    "Fervex": {
+      "expiresIn": 1,
+      "benefit": 50
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -1,
+      "benefit": 7
+    }
+  },
+  {
+    "day": 5,
+    "Herbal Tea": {
+      "expiresIn": 5,
+      "benefit": 10
+    },
+    "Fervex": {
+      "expiresIn": 0,
+      "benefit": 50
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -2,
+      "benefit": 5
+    }
+  },
+  {
+    "day": 6,
+    "Herbal Tea": {
+      "expiresIn": 4,
+      "benefit": 11
+    },
+    "Fervex": {
+      "expiresIn": -1,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -3,
+      "benefit": 3
+    }
+  },
+  {
+    "day": 7,
+    "Herbal Tea": {
+      "expiresIn": 3,
+      "benefit": 12
+    },
+    "Fervex": {
+      "expiresIn": -2,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -4,
+      "benefit": 1
+    }
+  },
+  {
+    "day": 8,
+    "Herbal Tea": {
+      "expiresIn": 2,
+      "benefit": 13
+    },
+    "Fervex": {
+      "expiresIn": -3,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -5,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 9,
+    "Herbal Tea": {
+      "expiresIn": 1,
+      "benefit": 14
+    },
+    "Fervex": {
+      "expiresIn": -4,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -6,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 10,
+    "Herbal Tea": {
+      "expiresIn": 0,
+      "benefit": 15
+    },
+    "Fervex": {
+      "expiresIn": -5,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -7,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 11,
+    "Herbal Tea": {
+      "expiresIn": -1,
+      "benefit": 17
+    },
+    "Fervex": {
+      "expiresIn": -6,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -8,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 12,
+    "Herbal Tea": {
+      "expiresIn": -2,
+      "benefit": 19
+    },
+    "Fervex": {
+      "expiresIn": -7,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -9,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 13,
+    "Herbal Tea": {
+      "expiresIn": -3,
+      "benefit": 21
+    },
+    "Fervex": {
+      "expiresIn": -8,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -10,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 14,
+    "Herbal Tea": {
+      "expiresIn": -4,
+      "benefit": 23
+    },
+    "Fervex": {
+      "expiresIn": -9,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -11,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 15,
+    "Herbal Tea": {
+      "expiresIn": -5,
+      "benefit": 25
+    },
+    "Fervex": {
+      "expiresIn": -10,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -12,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 16,
+    "Herbal Tea": {
+      "expiresIn": -6,
+      "benefit": 27
+    },
+    "Fervex": {
+      "expiresIn": -11,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -13,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 17,
+    "Herbal Tea": {
+      "expiresIn": -7,
+      "benefit": 29
+    },
+    "Fervex": {
+      "expiresIn": -12,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -14,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 18,
+    "Herbal Tea": {
+      "expiresIn": -8,
+      "benefit": 31
+    },
+    "Fervex": {
+      "expiresIn": -13,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -15,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 19,
+    "Herbal Tea": {
+      "expiresIn": -9,
+      "benefit": 33
+    },
+    "Fervex": {
+      "expiresIn": -14,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -16,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 20,
+    "Herbal Tea": {
+      "expiresIn": -10,
+      "benefit": 35
+    },
+    "Fervex": {
+      "expiresIn": -15,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -17,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 21,
+    "Herbal Tea": {
+      "expiresIn": -11,
+      "benefit": 37
+    },
+    "Fervex": {
+      "expiresIn": -16,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -18,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 22,
+    "Herbal Tea": {
+      "expiresIn": -12,
+      "benefit": 39
+    },
+    "Fervex": {
+      "expiresIn": -17,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -19,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 23,
+    "Herbal Tea": {
+      "expiresIn": -13,
+      "benefit": 41
+    },
+    "Fervex": {
+      "expiresIn": -18,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -20,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 24,
+    "Herbal Tea": {
+      "expiresIn": -14,
+      "benefit": 43
+    },
+    "Fervex": {
+      "expiresIn": -19,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -21,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 25,
+    "Herbal Tea": {
+      "expiresIn": -15,
+      "benefit": 45
+    },
+    "Fervex": {
+      "expiresIn": -20,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -22,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 26,
+    "Herbal Tea": {
+      "expiresIn": -16,
+      "benefit": 47
+    },
+    "Fervex": {
+      "expiresIn": -21,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -23,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 27,
+    "Herbal Tea": {
+      "expiresIn": -17,
+      "benefit": 49
+    },
+    "Fervex": {
+      "expiresIn": -22,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -24,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 28,
+    "Herbal Tea": {
+      "expiresIn": -18,
+      "benefit": 50
+    },
+    "Fervex": {
+      "expiresIn": -23,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -25,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 29,
+    "Herbal Tea": {
+      "expiresIn": -19,
+      "benefit": 50
+    },
+    "Fervex": {
+      "expiresIn": -24,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -26,
+      "benefit": 0
+    }
+  },
+  {
+    "day": 30,
+    "Herbal Tea": {
+      "expiresIn": -20,
+      "benefit": 50
+    },
+    "Fervex": {
+      "expiresIn": -25,
+      "benefit": 0
+    },
+    "Magic Pill": {
+      "expiresIn": 15,
+      "benefit": 40
+    },
+    "Dafalgan": {
+      "expiresIn": -27,
+      "benefit": 0
+    }
+  }
+]
